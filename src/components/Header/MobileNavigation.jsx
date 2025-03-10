@@ -12,19 +12,19 @@ export default function MobileNavigation() {
           href="#"
           className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
         >
+          Recipes
+        </a>
+        <a
+          href="#"
+          className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
+        >
           About
         </a>
         <a
           href="#"
           className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
         >
-          Services
-        </a>
-        <a
-          href="#"
-          className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
-        >
-          Contact
+          Profile
         </a>
       </div>
 

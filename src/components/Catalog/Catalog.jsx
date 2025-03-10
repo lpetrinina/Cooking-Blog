@@ -12,7 +12,7 @@ export default function Catalog() {
           />
 
           <p href="#" className="ml-2 inline-block font-semibold">
-            Catalog
+            All Recipes
           </p>
         </div>
         {/* <a href="#">See All</a> */}

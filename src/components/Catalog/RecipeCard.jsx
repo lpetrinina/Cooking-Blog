@@ -9,7 +9,7 @@ export default function RecipeCard() {
             src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
             alt="Sunset in the mountains"
           />
-          <div className="absolute bottom-0 left-0 right-0 top-0 bg-gray-900 opacity-25 transition duration-300 hover:bg-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-gray-900 opacity-20 transition duration-1000 hover:bg-transparent"></div>
         </a>
         {/* <a href="#!">
               <div className="absolute right-0 top-0 mr-3 mt-3 bg-indigo-600 px-4 py-2 text-xs text-white transition duration-500 ease-in-out hover:bg-white hover:text-indigo-600">
@@ -20,7 +20,7 @@ export default function RecipeCard() {
       <div className="mb-auto px-6 py-4">
         <a
           href="#"
-          className="mb-2 inline-block text-lg font-medium transition duration-500 ease-in-out hover:text-indigo-600"
+          className="mb-2 inline-block text-lg font-medium transition duration-500 ease-in-out hover:text-pink-600"
         >
           Simplest Salad Recipe ever
         </a>
@@ -29,10 +29,10 @@ export default function RecipeCard() {
           industry.
         </p>
       </div>
-      <div className="flex flex-row items-center justify-between bg-gray-100 px-6 py-3">
+      <div className="flex flex-row items-center justify-between bg-pink-50 px-6 py-3 opacity-70">
         <span
           href="#"
-          className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-900"
+          className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-700"
         >
           <svg
             height="13px"
