@@ -3,13 +3,6 @@ import { useState } from "react";
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
 
-const navStyles = {
-  activeStyle:
-    "inline-flex items-center border-b-2 border-pink-500 px-1 pt-1 text-sm font-medium text-gray-900",
-  hoverStyle:
-    "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-pink-300 hover:text-gray-700",
-};
-
 const navigation = [
   { name: "Home", path: "/" },
   { name: "Recipes", path: "/recipes" },
@@ -44,7 +37,7 @@ export default function Header() {
               </a>
 
               {/* Main navigation */}
-              <Navigation navigation={navigation} navStyles={navStyles} />
+              <Navigation navigation={navigation} />
             </div>
 
             <div className="flex items-center">

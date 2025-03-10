@@ -1,31 +1,20 @@
-export default function MobileNavigation() {
+import { NavLink } from "react-router";
+
+export default function MobileNavigation({ navigation }) {
   return (
     <>
       <div className="space-y-1 pb-3 pt-2">
-        <a
-          href="#"
-          className="block border-l-4 border-pink-500 bg-pink-50 py-2 pl-3 pr-4 text-base font-medium text-gray-900"
-        >
-          Home
-        </a>
-        <a
-          href="#"
-          className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
-        >
-          Recipes
-        </a>
-        <a
-          href="#"
-          className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
-        >
-          About
-        </a>
-        <a
-          href="#"
-          className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700"
-        >
-          Profile
-        </a>
+        {navigation.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? navStyles.activeStyle : navStyles.hoverStyle
+            }
+          >
+            {item.name}
+          </NavLink>
+        ))}
       </div>
 
       <div class="border-t border-gray-200 pb-3 pt-4">
@@ -47,3 +36,10 @@ export default function MobileNavigation() {
     </>
   );
 }
+
+const navStyles = {
+  activeStyle:
+    "block border-l-4 border-pink-500 bg-pink-50 py-2 pl-3 pr-4 text-base font-medium text-gray-900",
+  hoverStyle:
+    "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-pink-300 hover:bg-gray-50 hover:text-gray-700",
+};
