@@ -3,6 +3,20 @@ import { useState } from "react";
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
 
+const navStyles = {
+  activeStyle:
+    "inline-flex items-center border-b-2 border-pink-500 px-1 pt-1 text-sm font-medium text-gray-900",
+  hoverStyle:
+    "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-pink-300 hover:text-gray-700",
+};
+
+const navigation = [
+  { name: "Home", path: "/" },
+  { name: "Recipes", path: "/recipes" },
+  { name: "About", path: "/about" },
+  { name: "Profile", path: "/profile" },
+];
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -30,7 +44,7 @@ export default function Header() {
               </a>
 
               {/* Main navigation */}
-              <Navigation />
+              <Navigation navigation={navigation} navStyles={navStyles} />
             </div>
 
             <div className="flex items-center">
@@ -76,7 +90,7 @@ export default function Header() {
 
         {/* <!-- Mobile menu, show/hide based on menu state --> */}
         <div className={mobileMenuOpen ? "block" : "hidden"} id="mobile-menu">
-          <MobileNavigation />
+          <MobileNavigation navigation={navigation} />
         </div>
       </nav>
     </>
