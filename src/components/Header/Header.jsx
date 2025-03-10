@@ -1,6 +1,14 @@
-import Navigation from "./Navigation";
-export default function Header() {
+import { useState } from "react";
 
+import Navigation from "./Navigation";
+import MobileNavigation from "./MobileNavigation";
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((mobileMenuOpen) => !mobileMenuOpen);
+  };
 
   return (
     <>
@@ -37,9 +45,40 @@ export default function Header() {
                 </div>
               </div>
 
+              <div className="flex items-center md:hidden">
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-inset focus:ring-pink-500"
+                  aria-expanded={mobileMenuOpen}
+                  onClick={toggleMobileMenu}
+                >
+                  <span className="sr-only">Open main menu</span>
+                  <svg
+                    className="block h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* <!-- Mobile menu, show/hide based on menu state --> */}
+        <div className={mobileMenuOpen ? "block" : "hidden"} id="mobile-menu">
+          <MobileNavigation />
+        </div>
+      </nav>
 
       {/* 
       <!-- Page content --> */}
