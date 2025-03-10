@@ -1,3 +1,4 @@
+import Catalog from "./Catalog/Catalog";
 import Home from "./Home";
 
 export default function Main() {
@@ -7,7 +8,8 @@ export default function Main() {
       <div className="bg-white pt-16">
         <div className="mx-auto max-w-7xl py-2 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-screen-xl bg-white p-5 sm:p-10 md:p-16">
-            <Home />
+            {/* <Home /> */}
+            <Catalog />
           </div>
         </div>
       </div>
