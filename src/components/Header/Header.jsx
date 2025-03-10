@@ -1,3 +1,4 @@
+import Navigation from "./Navigation";
 export default function Header() {
 
 
@@ -20,6 +21,8 @@ export default function Header() {
                 </span>
               </a>
 
+              {/* Main navigation */}
+              <Navigation />
             </div>
 
             <div className="flex items-center">
