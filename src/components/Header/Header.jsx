@@ -79,18 +79,6 @@ export default function Header() {
           <MobileNavigation />
         </div>
       </nav>
-
-      {/* 
-      <!-- Page content --> */}
-      {/* <div className="bg-fuchsia-50 pt-16">
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <div className="flex h-96 items-center justify-center rounded-lg border-4 border-dashed border-gray-200">
-              <p className="text-xl text-gray-500">Page Content Goes Here</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }
