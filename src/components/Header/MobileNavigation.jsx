@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 export default function MobileNavigation({ navigation }) {
   return (
@@ -17,20 +17,20 @@ export default function MobileNavigation({ navigation }) {
         ))}
       </div>
 
-      <div class="border-t border-gray-200 pb-3 pt-4">
-        <div class="flex flex-col items-center space-y-2 px-3">
-          <a
-            href="#"
-            class="block w-full rounded-md bg-gray-100 px-3 py-2 text-center text-base font-medium text-pink-400"
+      <div className="border-t border-gray-200 pb-3 pt-4">
+        <div className="flex flex-col items-center space-y-2 px-3">
+          <Link
+            to="/login"
+            className="block w-full rounded-md bg-gray-100 px-3 py-2 text-center text-base font-medium text-pink-400"
           >
             Login
-          </a>
-          <a
-            href="#"
-            class="block w-full rounded-md bg-pink-400 px-3 py-2 text-center text-base font-medium text-white"
+          </Link>
+          <Link
+            to="/sign-up"
+            className="block w-full rounded-md bg-pink-400 px-3 py-2 text-center text-base font-medium text-white"
           >
             Sign Up
-          </a>
+          </Link>
         </div>
       </div>
     </>

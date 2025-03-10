@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
@@ -25,7 +26,7 @@ export default function Header() {
           <div className="flex h-16 justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="#" className="flex flex-shrink-0 items-center">
+              <Link to="/" className="flex flex-shrink-0 items-center">
                 <img
                   className="h-9 w-auto"
                   src="/baked-cake-cup.svg"
@@ -34,7 +35,7 @@ export default function Header() {
                 <span className="ml-3 text-xl font-bold text-pink-600">
                   Cooking Blog
                 </span>
-              </a>
+              </Link>
 
               {/* Main navigation */}
               <Navigation navigation={navigation} />
@@ -43,12 +44,18 @@ export default function Header() {
             <div className="flex items-center">
               <div className="hidden md:ml-4 md:flex md:items-center">
                 <div className="flex justify-between gap-3">
-                  <button className="rounded-md px-4 py-2 text-sm font-medium text-pink-400 hover:ring-1 hover:ring-pink-400 focus:outline-none focus:ring-1 focus:ring-pink-400 focus:ring-offset-1">
+                  <Link
+                    to="/login"
+                    className="rounded-md px-4 py-2 text-sm font-medium text-pink-400 hover:ring-1 hover:ring-pink-400 focus:outline-none focus:ring-1 focus:ring-pink-400 focus:ring-offset-1"
+                  >
                     Login
-                  </button>
-                  <button className="rounded-md bg-pink-400 px-4 py-2 text-sm font-medium text-white hover:bg-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:ring-offset-1">
+                  </Link>
+                  <Link
+                    to="/sign-up"
+                    className="rounded-md bg-pink-400 px-4 py-2 text-sm font-medium text-white hover:bg-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:ring-offset-1"
+                  >
                     Sign up
-                  </button>
+                  </Link>
                 </div>
               </div>
 
