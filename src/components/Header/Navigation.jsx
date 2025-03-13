@@ -5,7 +5,7 @@ export default function Navigation({ navigation }) {
 
   return (
     <>
-      <div className="md:ml-6 md:flex md:space-x-8">
+      <div className="hidden md:ml-6 md:flex md:space-x-8">
         {navigation.map((item) => (
           <NavLink
             key={item.name}

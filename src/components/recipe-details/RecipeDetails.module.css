@@ -1,0 +1,140 @@
+/* Common styles */
+* {
+  font-size: 16px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+}
+
+.flex-colomn {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.wrapper {
+  border: 2px solid pink;
+  border-radius: 3px;
+  padding: 50px;
+}
+
+/* Header */
+
+header .text-container {
+  flex: 0 1 440px;
+}
+
+header .image-container {
+  flex: 0 1 560px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.post-title {
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  padding-bottom: 20px;
+}
+
+.post-info {
+  font-style: italic;
+  line-height: 1.6;
+  margin: 20px 0 20px 0;
+}
+
+.recipe-times {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+
+  line-height: 1.7;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  padding: 15px 0;
+  margin-top: 40px;
+  border-top: 1px solid #bfbebc;
+  border-bottom: 1px solid #bfbebc;
+}
+
+.recipe-times div {
+  flex: 1 1 30%;
+}
+
+.recipe-times > div:nth-child(2) {
+  border-right: 1px solid #bfbebc;
+  border-left: 1px solid #bfbebc;
+}
+
+.rt-value {
+  margin-top: 15px;
+  font-size: 11px;
+}
+
+.recipe-feedback {
+  display: flex;
+  margin: 25px 0;
+  justify-content: space-evenly;
+}
+
+.recipe-feedback img {
+  width: 20px;
+  height: 20px;
+}
+
+.recipe-feedback p {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-size: 14px;
+}
+
+.likes,
+.coments {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Section Ingredients */
+
+.section-ingredients h2,
+.section-instructions h2 {
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin: 30px 0;
+}
+
+.ingredients-list li {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+/* Section Instructions */
+
+.section-instructions {
+  border-top: 1px solid #bfbebc;
+}
+
+.instructions-list li:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+
+.instructions-list h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
