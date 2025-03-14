@@ -1,4 +1,4 @@
-export default function RecipeCard() {
+export default function RecipeItem() {
   return (
     <div className="flex flex-col overflow-hidden rounded shadow-lg">
       <a href="#"></a>

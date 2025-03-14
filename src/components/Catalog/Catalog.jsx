@@ -1,4 +1,4 @@
-import RecipeCard from "./RecipeCard";
+import RecipeItem from "./RecipeItem";
 
 export default function Catalog() {
   return (
@@ -20,12 +20,9 @@ export default function Catalog() {
 
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
         {/* <!-- CARD 1 --> */}
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
+        <RecipeItem />
+        <RecipeItem />
+        <RecipeItem />
 
         {/* <!-- CARD 2 --> */}
         {/* <div className="flex flex-col overflow-hidden rounded shadow-lg">

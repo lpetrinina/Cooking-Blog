@@ -1,4 +1,4 @@
-import RecipeCard from "./Catalog/RecipeCard";
+import RecipeItem from "./catalog/RecipeItem";
 
 export default function Home() {
   return (
@@ -21,9 +21,9 @@ export default function Home() {
       {/* The most liked 3 posts */}
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
         {/* <!-- CARD 1 --> */}
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
+        <RecipeItem />
+        <RecipeItem />
+        <RecipeItem />
 
         {/* <!-- CARD 2 --> */}
         {/* <div className="flex flex-col overflow-hidden rounded shadow-lg">
