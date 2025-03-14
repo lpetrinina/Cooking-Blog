@@ -105,6 +105,24 @@ export default function RecipeDetails() {
             </li>
           </ul>
         </section>
+
+        <section className={styles["like-post"]}>
+          {/* Logged users can like recipe */}
+          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
+            <div class="rounded-md shadow">
+              <a
+                class="flex w-full items-center justify-center rounded-md bg-pink-400 px-8 py-3 text-base font-medium leading-6 text-white ring-pink-400 ring-offset-2 transition duration-150 ease-in-out hover:bg-pink-500 hover:text-white focus:outline-none focus:ring md:px-10 md:py-4 md:text-lg"
+                href=""
+              >
+                Like
+              </a>
+            </div>
+          </div>
+          {/* Logged user who already liked current recipe */}
+          {/* <p className={styles["like-msg"]}>
+            You have already liked this recipe!
+          </p> */}
+        </section>
       </div>
     </div>
   );
