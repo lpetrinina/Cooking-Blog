@@ -3,8 +3,8 @@ import styles from "./RecipeDetails.module.css";
 export default function RecipeDetails() {
   return (
     <div className={styles.wrapper}>
-      <div className={styles["flex-colomn"]}>
-        <header className={`${styles["flex-row"]}`}>
+      <div className={styles["container"]}>
+        <header className={`${styles["section-header"]}`}>
           <div className={styles["text-container"]}>
             <h1 className={styles["post-title"]}>
               Blender Banana Spinach Muffins
@@ -74,7 +74,7 @@ export default function RecipeDetails() {
           <h2>Instructions</h2>
           <ul className={styles["instructions-list"]}>
             <li>
-              <h3>Step 1</h3>
+              <span className={styles["step"]}>1.</span>
               <p>
                 Preheat the oven to 375 degrees F. Line a muffin tin with 10
                 muffin liners (we’re only making 10 muffins). Spray the inside
@@ -83,7 +83,7 @@ export default function RecipeDetails() {
               </p>
             </li>
             <li>
-              <h3>Step 2</h3>
+              <span className={styles["step"]}>2.</span>
               <p>
                 Add the eggs, bananas, maple syrup/honey, dairy free milk,
                 spinach and vanilla extract to a large, high powered blender and
@@ -92,7 +92,7 @@ export default function RecipeDetails() {
               </p>
             </li>
             <li>
-              <h3>Step 3</h3>
+              <span className={styles["step"]}>3.</span>
               <p>
                 In a large bowl whisk together the almond flour, oat flour,
                 flaxseed meal, cinnamon, baking powder, baking soda and salt
