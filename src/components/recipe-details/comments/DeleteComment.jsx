@@ -51,7 +51,7 @@ export default function DeleteComment() {
             </svg>
           </button>
 
-          <div className="mt-10 gap-4 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:mt-6 sm:flex sm:flex-row sm:justify-center lg:justify-center">
             <div className="rounded-md shadow">
               <PrimaryBtn>Delete</PrimaryBtn>
             </div>
