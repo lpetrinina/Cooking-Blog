@@ -1,3 +1,5 @@
+import PrimaryBtn from "../../common/buttons/PrimaryBtn";
+
 export default function CreateComment() {
   return (
     <form className="rounded-sm bg-white p-4 shadow-md">
@@ -29,9 +31,7 @@ export default function CreateComment() {
 
       <div className="mt-5 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
         <div className="rounded-md shadow">
-          <button className="flex w-full items-center justify-center rounded-md bg-pink-400 px-6 py-2 text-base font-medium leading-6 text-white ring-pink-400 ring-offset-1 transition duration-150 ease-in-out hover:bg-pink-500 hover:text-white focus:outline-none focus:ring md:px-8 md:py-3 md:text-lg">
-            Post comment
-          </button>
+          <PrimaryBtn>Post comment</PrimaryBtn>
         </div>
       </div>
     </form>

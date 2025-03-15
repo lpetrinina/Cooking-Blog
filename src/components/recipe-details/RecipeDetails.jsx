@@ -1,3 +1,4 @@
+import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import CommnetsList from "./comments/CommentsList";
 import styles from "./RecipeDetails.module.css";
 
@@ -115,12 +116,7 @@ export default function RecipeDetails() {
             {/* Logged users can like recipe */}
             <div className="mt-5 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
               <div className="rounded-md shadow">
-                <a
-                  className="flex w-full items-center justify-center rounded-md bg-pink-400 px-6 py-2 text-base font-medium leading-6 text-white ring-pink-400 ring-offset-1 transition duration-150 ease-in-out hover:bg-pink-500 hover:text-white focus:outline-none focus:ring md:px-8 md:py-3 md:text-lg"
-                  href="#"
-                >
-                  Like
-                </a>
+                <PrimaryBtn>Like</PrimaryBtn>
               </div>
             </div>
             {/* Logged user who already liked current recipe */}

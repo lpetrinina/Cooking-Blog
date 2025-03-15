@@ -1,3 +1,6 @@
+import PrimaryBtn from "../../common/buttons/PrimaryBtn";
+import SecondaryBtn from "../../common/buttons/SecondaryBtn";
+
 export default function EditComment() {
   return (
     <div className="fixed inset-0 z-40 flex min-h-full items-center overflow-y-auto overflow-x-hidden transition">
@@ -36,7 +39,7 @@ export default function EditComment() {
               Comment
             </label>
             <textarea
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:ring-1 focus:ring-inset focus:ring-pink-400"
+              className="focus:shadow-outline h-40 w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none focus:ring-1 focus:ring-inset focus:ring-pink-400"
               id="comment"
               rows="3"
               placeholder="Enter your comment"
@@ -44,16 +47,12 @@ export default function EditComment() {
           </div>
 
           <div className="mt-5 gap-4 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
-            <div className="rounded-md">
-              <button className="w-full items-center rounded-md bg-pink-400 px-6 py-2 text-sm font-medium leading-6 text-white ring-pink-400 ring-offset-1 transition duration-150 ease-in-out hover:bg-pink-500 hover:text-white focus:outline-none focus:ring-1 md:px-5 md:py-2 md:text-sm">
-                Edit
-              </button>
+            <div className="rounded-md shadow">
+              <PrimaryBtn>Edit</PrimaryBtn>
             </div>
 
-            <div>
-              <button className="w-full items-center rounded-md px-4 py-2 text-sm font-medium text-pink-400 ring-1 ring-pink-300 hover:ring-1 hover:ring-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-400 focus:ring-offset-1">
-                Cancel
-              </button>
+            <div className="rounded-md shadow">
+              <SecondaryBtn>Cancel</SecondaryBtn>
             </div>
           </div>
         </form>
