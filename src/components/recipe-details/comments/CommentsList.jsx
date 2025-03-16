@@ -17,7 +17,7 @@ export default function CommnetsList() {
           </p>
 
           {/* Comment owner can edit and delete it */}
-          <div class="mt-3 flex items-center gap-2">
+          <div class="mt-3 flex items-center justify-end gap-2">
             <button class="mr-2 flex items-center gap-1 text-gray-600 hover:text-gray-900">
               <img src="/edit.svg" alt="Edit svg" className="w-5" />
               Edit

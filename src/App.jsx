@@ -2,6 +2,7 @@ import "./App.css";
 
 import Header from "./components/header/Header";
 import Home from "./components/Home";
+import Login from "./components/login/Login";
 import RecipeDetails from "./components/recipe-details/RecipeDetails";
 // import Catalog from "./components/catalog/Catalog";
 
@@ -15,7 +16,8 @@ function App() {
           <div className="mx-auto max-w-screen-xl bg-white p-5 sm:p-10 md:p-16">
             {/* <Home /> */}
             {/* <Catalog /> */}
-            <RecipeDetails />
+            {/* <RecipeDetails /> */}
+            <Login />
           </div>
         </div>
       </div>
