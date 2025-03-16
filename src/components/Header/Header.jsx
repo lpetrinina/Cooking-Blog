@@ -33,7 +33,7 @@ export default function Header() {
                   alt="Logo"
                 />
                 <span className="ml-3 text-xl font-bold text-pink-600">
-                  Cooking Blog
+                  Healthy Sweet Life
                 </span>
               </Link>
 
