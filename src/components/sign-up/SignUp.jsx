@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./SignUp.module.css";
 
@@ -47,9 +48,9 @@ export default function SignUp() {
 
             <div className={styles["link-container"]}>
               <p>Already have an account?</p>
-              <a href="#" className={styles["link-to-login"]}>
+              <Link to="/login" className={styles["link-to-login"]}>
                 Login &rarr;
-              </a>
+              </Link>
             </div>
           </div>
         </div>
