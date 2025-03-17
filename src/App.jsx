@@ -8,6 +8,7 @@ import Login from "./components/login/Login";
 import RecipeDetails from "./components/recipe-details/RecipeDetails";
 import SignUp from "./components/sign-up/SignUp";
 import Catalog from "./components/catalog/Catalog";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             </Routes>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

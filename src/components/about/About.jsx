@@ -3,7 +3,7 @@ import styles from "./About.module.css";
 export default function About() {
   return (
     <>
-      <div className="flex flex-col justify-center bg-white py-12 sm:px-6 lg:px-8">
+      <div className="flex flex-col justify-center bg-white py-4 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full">
           <div className="bg-gradient-to-r from-white to-pink-100 px-4 py-8 text-gray-700 shadow-lg sm:rounded-lg sm:px-10">
             <h1 className={styles["primary-header"]}>About us</h1>
