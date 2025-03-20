@@ -6,6 +6,7 @@ export default function RecipeItem({
   description,
   prepTime,
   cookTime,
+  imageUrl,
 }) {
   const shortDescription = description.slice().split(/[.!]/)[0];
   const recipeTime = prepTime + cookTime;
@@ -14,18 +15,14 @@ export default function RecipeItem({
     <div className="flex flex-col overflow-hidden rounded shadow-lg">
       <div className="relative">
         <Link to={`/recipes/${_id}/details`}>
-          <img
-            className="w-full"
-            src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-            alt="Sunset in the mountains"
-          />
+          <img className="w-full" src={imageUrl} alt={title} />
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-gray-900 opacity-20 transition duration-1000 hover:bg-transparent"></div>
         </Link>
       </div>
 
       <div className="mb-auto px-6 py-4">
         <Link
-          href="#"
+          to={`/recipes/${_id}/details`}
           className="mb-2 inline-block text-lg font-medium transition duration-500 ease-in-out hover:text-pink-600"
         >
           {title}
@@ -35,10 +32,7 @@ export default function RecipeItem({
       </div>
 
       <div className="flex flex-row items-center justify-between bg-pink-50 px-6 py-3 opacity-70">
-        <span
-          href="#"
-          className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-700"
-        >
+        <span className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-700">
           <svg
             height="13px"
             width="13px"
@@ -61,10 +55,7 @@ export default function RecipeItem({
           <span className="ml-1">{recipeTime} min</span>
         </span>
 
-        <span
-          href="#"
-          className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-900"
-        >
+        <span className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-900">
           <svg
             className="h-5"
             fill="none"
