@@ -8,7 +8,6 @@ export default function RecipeCreate() {
   const navigate = useNavigate();
 
   const submitionAction = async (formData) => {
-    // take data from form
     const recipeData = Object.fromEntries(formData);
 
     await recipeService.create(recipeData);

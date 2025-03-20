@@ -1,3 +1,5 @@
+import { request } from "../components/utils/requester";
+
 const baseUrl = 'http://localhost:3030/jsonstore/recipes';
 
 export default {
@@ -14,15 +16,7 @@ export default {
 
         console.log(recipeData)
 
-        const responce = await fetch(baseUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(recipeData)
-        });
-
-        const result = await responce.json();
+        const result = await request('POST', baseUrl, recipeData);
 
         return result;
     }
