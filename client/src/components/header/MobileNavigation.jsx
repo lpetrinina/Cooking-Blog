@@ -4,17 +4,49 @@ export default function MobileNavigation({ navigation }) {
   return (
     <>
       <div className="space-y-1 pb-3 pt-2">
-        {navigation.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              isActive ? navStyles.activeStyle : navStyles.hoverStyle
-            }
-          >
-            {item.name}
-          </NavLink>
-        ))}
+        {/* For all users */}
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive ? navStyles.activeStyle : navStyles.hoverStyle
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to={"/recipes"}
+          className={({ isActive }) =>
+            isActive ? navStyles.activeStyle : navStyles.hoverStyle
+          }
+        >
+          Recipes
+        </NavLink>
+        <NavLink
+          to={"/about"}
+          className={({ isActive }) =>
+            isActive ? navStyles.activeStyle : navStyles.hoverStyle
+          }
+        >
+          About
+        </NavLink>
+
+        {/* For logged users */}
+        {/* <NavLink
+                  to={"/profile"}
+                  className={({ isActive }) =>
+                    isActive ? navStyles.activeStyle : navStyles.hoverStyle
+                  }
+                >
+                  Profile
+                </NavLink> */}
+        <NavLink
+          to={"/recipe-create"}
+          className={({ isActive }) =>
+            isActive ? navStyles.activeStyle : navStyles.hoverStyle
+          }
+        >
+          Create
+        </NavLink>
       </div>
 
       <div className="border-t border-gray-200 pb-3 pt-4">
