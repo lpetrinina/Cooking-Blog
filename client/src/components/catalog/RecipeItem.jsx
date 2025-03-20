@@ -1,34 +1,39 @@
-export default function RecipeItem() {
+import { Link } from "react-router";
+
+export default function RecipeItem({
+  _id,
+  title,
+  description,
+  prepTime,
+  cookTime,
+}) {
+  const shortDescription = description.slice().split(/[.!]/)[0];
+  const recipeTime = prepTime + cookTime;
+
   return (
     <div className="flex flex-col overflow-hidden rounded shadow-lg">
-      <a href="#"></a>
       <div className="relative">
-        <a href="#">
+        <Link to={`/recipes/${_id}/details`}>
           <img
             className="w-full"
             src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
             alt="Sunset in the mountains"
           />
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-gray-900 opacity-20 transition duration-1000 hover:bg-transparent"></div>
-        </a>
-        {/* <a href="#!">
-              <div className="absolute right-0 top-0 mr-3 mt-3 bg-indigo-600 px-4 py-2 text-xs text-white transition duration-500 ease-in-out hover:bg-white hover:text-indigo-600">
-                Cooking
-              </div>
-            </a> */}
+        </Link>
       </div>
+
       <div className="mb-auto px-6 py-4">
-        <a
+        <Link
           href="#"
           className="mb-2 inline-block text-lg font-medium transition duration-500 ease-in-out hover:text-pink-600"
         >
-          Simplest Salad Recipe ever
-        </a>
-        <p className="text-sm text-gray-500">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </p>
+          {title}
+        </Link>
+
+        <p className="text-sm text-gray-500">{shortDescription} ...</p>
       </div>
+
       <div className="flex flex-row items-center justify-between bg-pink-50 px-6 py-3 opacity-70">
         <span
           href="#"
@@ -53,7 +58,7 @@ export default function RecipeItem() {
               </g>
             </g>
           </svg>
-          <span className="ml-1">30 min</span>
+          <span className="ml-1">{recipeTime} min</span>
         </span>
 
         <span
