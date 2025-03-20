@@ -1,7 +1,21 @@
+import { useNavigate } from "react-router";
+import recipeService from "../../service/recipeService";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
+
 import styles from "./RecipeCreate.module.css";
 
 export default function RecipeCreate() {
+  const navigate = useNavigate();
+
+  const submitionAction = async (formData) => {
+    // take data from form
+    const recipeData = Object.fromEntries(formData);
+
+    await recipeService.create(recipeData);
+
+    navigate("/");
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center bg-white sm:px-6 lg:px-8">
@@ -13,12 +27,13 @@ export default function RecipeCreate() {
             </div>
 
             {/* <!-- Form --> */}
-            <form className="space-y-6">
+            <form className="space-y-6" action={submitionAction}>
               {/* <!-- Title --> */}
               <div className={styles["filed"]}>
                 <input
                   type="text"
                   id="title"
+                  name="title"
                   placeholder="Banana Spinach Muffins"
                 />
                 <label htmlFor="title">Title</label>
@@ -28,6 +43,7 @@ export default function RecipeCreate() {
               <div className={styles["filed"]}>
                 <textarea
                   id="description"
+                  name="description"
                   placeholder="Nutritious banana spinach muffins made right in your blender! ..."
                 />
                 <label htmlFor="description">Description</label>
@@ -35,13 +51,23 @@ export default function RecipeCreate() {
 
               {/* <!-- Preparation time --> */}
               <div className={styles["filed"]}>
-                <input type="text" id="prepTime" placeholder="20" />
+                <input
+                  type="text"
+                  id="prepTime"
+                  name="prepTime"
+                  placeholder="20"
+                />
                 <label htmlFor="prepTime">Preparation time (in minutes)</label>
               </div>
 
               {/* <!-- Cook time --> */}
               <div className={styles["filed"]}>
-                <input type="text" id="cookTime" placeholder="60" />
+                <input
+                  type="text"
+                  id="cookTime"
+                  name="cookTime"
+                  placeholder="60"
+                />
                 <label htmlFor="cookTime">Cook time (in minutes)</label>
               </div>
 
@@ -50,7 +76,8 @@ export default function RecipeCreate() {
                 <input
                   type="text"
                   id="imageUrl"
-                  placeholder="https://www.ambitiouskitchen.com/banana-spinach-muffins/"
+                  name="imageUrl"
+                  placeholder="https://www.ambitiouskitchen.com/wp-content/uploads/2021/06/Banana-Spinach-Muffins-5-594x594.jpg"
                 />
                 <label htmlFor="imageUrl">Image</label>
               </div>
@@ -59,6 +86,7 @@ export default function RecipeCreate() {
               <div className={styles["filed"]}>
                 <textarea
                   id="ingredients"
+                  name="ingredients"
                   placeholder="3 cups (128g) spinach ..."
                 />
                 <label htmlFor="ingredients">Ingredients</label>
@@ -68,6 +96,7 @@ export default function RecipeCreate() {
               <div className={styles["filed"]}>
                 <textarea
                   id="steps"
+                  name="steps"
                   placeholder="Add the eggs, bananas, maple syrup/honey, dairy free milk, spinach and vanilla extract to a large ..."
                 />
                 <label htmlFor="steps">Steps</label>
