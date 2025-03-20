@@ -26,6 +26,12 @@ export default {
         const recipes = Object.values(result);
 
         return recipes;
-    }
+    },
 
+    async getOne(recipeId) {
+
+        const recipe = await request('GET', `${baseUrl}/${recipeId}`);
+
+        return recipe;
+    }
 }
