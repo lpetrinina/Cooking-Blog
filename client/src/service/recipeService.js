@@ -14,11 +14,18 @@ export default {
             steps: data.steps.split('\n'),
         }
 
-        console.log(recipeData)
-
         const result = await request('POST', baseUrl, recipeData);
 
         return result;
+    },
+
+    async getAll() {
+
+        const result = await request('GET', baseUrl);
+
+        const recipes = Object.values(result);
+
+        return recipes;
     }
 
 }
