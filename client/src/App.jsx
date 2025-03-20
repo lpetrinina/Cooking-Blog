@@ -1,13 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import "./App.css";
-import About from "./components/about/About";
 
 import Header from "./components/header/Header";
-import Home from "./components/Home";
+
+import Home from "./components/home/Home";
 import Login from "./components/login/Login";
-import RecipeDetails from "./components/recipe-details/RecipeDetails";
 import SignUp from "./components/sign-up/SignUp";
+import About from "./components/about/About";
 import Catalog from "./components/catalog/Catalog";
+// import RecipeDetails from "./components/recipe-details/RecipeDetails";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             </Routes>
           </div>
         </div>
+
         <Footer />
       </div>
     </>
