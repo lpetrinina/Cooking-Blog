@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router";
+
 import CommnetsList from "../comments/CommentsList";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
-
 import styles from "./RecipeDetails.module.css";
-import { useParams } from "react-router";
+
 import recipeService from "../../service/recipeService";
 
 export default function RecipeDetails() {
@@ -87,17 +88,33 @@ export default function RecipeDetails() {
             </ul>
           </section>
 
-          <section className={styles["like-post"]}>
+          <section>
             {/* Logged users can like recipe */}
-            <div className="mt-5 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
+            {/* <div className="mt-5 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
               <div className="rounded-md shadow">
                 <PrimaryBtn>Like</PrimaryBtn>
               </div>
-            </div>
+            </div> */}
+
             {/* Logged user who already liked current recipe */}
             {/* <p className={styles["like-msg"]}>
             You have already liked this recipe!
           </p> */}
+
+            {/* Recipe owner can edit and delete it */}
+            <div className="mt-5 flex flex-col items-center gap-4 sm:mt-6 sm:flex sm:flex-row sm:justify-center sm:gap-4 lg:justify-center">
+              <div className="rounded-md shadow">
+                <Link
+                  to={`/recipes/${recipe._id}/edit`}
+                  className="text-md block w-full items-center rounded-md bg-pink-400 px-6 py-2 font-medium leading-6 text-white ring-1 ring-pink-400 transition duration-150 ease-in-out hover:bg-pink-500 hover:text-white focus:outline-none focus:ring-1 focus:ring-offset-1 md:px-6 md:py-2 md:text-base"
+                >
+                  Edit
+                </Link>
+              </div>
+              <div className="rounded-md shadow">
+                <PrimaryBtn>Delete</PrimaryBtn>
+              </div>
+            </div>
           </section>
         </div>
       </div>
