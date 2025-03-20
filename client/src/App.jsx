@@ -9,7 +9,9 @@ import SignUp from "./components/sign-up/SignUp";
 import About from "./components/about/About";
 import Catalog from "./components/catalog/Catalog";
 import RecipeDetails from "./components/recipe-details/RecipeDetails";
+
 import Footer from "./components/footer/Footer";
+import RecipeCreate from "./components/recipe-create/RecipeCreate";
 
 function App() {
   return (
@@ -21,9 +23,10 @@ function App() {
           <div className="mx-auto max-w-screen-xl bg-white p-5 sm:p-10 md:p-16">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/recipes" element={<Catalog />} />
               <Route path="/login" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/recipes" element={<Catalog />} />
+              <Route path="/create" element={<RecipeCreate />} />
               <Route path="/about" element={<About />} />
               <Route
                 path="/recipes/:recipeId/details"

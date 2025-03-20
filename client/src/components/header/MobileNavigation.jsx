@@ -40,7 +40,7 @@ export default function MobileNavigation({ navigation }) {
                   Profile
                 </NavLink> */}
         <NavLink
-          to={"/recipe-create"}
+          to={"/create"}
           className={({ isActive }) =>
             isActive ? navStyles.activeStyle : navStyles.hoverStyle
           }

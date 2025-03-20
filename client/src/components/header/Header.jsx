@@ -4,13 +4,6 @@ import { Link } from "react-router";
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
 
-const navigation = [
-  { name: "Home", path: "/" },
-  { name: "Recipes", path: "/recipes" },
-  { name: "About", path: "/about" },
-  { name: "Profile", path: "/profile" },
-];
-
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,7 +31,7 @@ export default function Header() {
               </Link>
 
               {/* Main navigation */}
-              <Navigation navigation={navigation} />
+              <Navigation />
             </div>
 
             <div className="flex items-center">
@@ -90,7 +83,7 @@ export default function Header() {
 
         {/* <!-- Mobile menu, show/hide based on menu state --> */}
         <div className={mobileMenuOpen ? "block" : "hidden"} id="mobile-menu">
-          <MobileNavigation navigation={navigation} />
+          <MobileNavigation />
         </div>
       </nav>
     </>
