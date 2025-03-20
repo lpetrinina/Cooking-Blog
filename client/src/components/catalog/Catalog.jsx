@@ -18,11 +18,19 @@ export default function Catalog() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-        {recipes.map((recipe) => (
-          <RecipeItem key={recipe._id} {...recipe} />
-        ))}
-      </div>
+      {recipes.length > 0 && (
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+          {recipes.map((recipe) => (
+            <RecipeItem key={recipe._id} {...recipe} />
+          ))}
+        </div>
+      )}
+
+      {recipes.length === 0 && (
+        <p className="mt-28 text-center text-xl font-bold tracking-wide text-gray-500">
+          There is no recipe yet!
+        </p>
+      )}
     </>
   );
 }
