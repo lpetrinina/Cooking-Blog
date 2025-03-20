@@ -1,5 +1,5 @@
-import PrimaryBtn from "../../common/buttons/PrimaryBtn";
-import SecondaryBtn from "../../common/buttons/SecondaryBtn";
+import PrimaryBtn from "../common/buttons/PrimaryBtn";
+import SecondaryBtn from "../common/buttons/SecondaryBtn";
 
 export default function EditComment() {
   return (

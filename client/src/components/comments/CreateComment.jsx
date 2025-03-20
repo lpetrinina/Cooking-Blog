@@ -1,4 +1,4 @@
-import PrimaryBtn from "../../common/buttons/PrimaryBtn";
+import PrimaryBtn from "../common/buttons/PrimaryBtn";
 
 export default function CreateComment() {
   return (

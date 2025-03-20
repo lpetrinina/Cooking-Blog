@@ -1,5 +1,6 @@
+import CommnetsList from "../comments/CommentsList";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
-import CommnetsList from "./comments/CommentsList";
+
 import styles from "./RecipeDetails.module.css";
 
 export default function RecipeDetails() {
@@ -126,7 +127,6 @@ export default function RecipeDetails() {
           </section>
         </div>
       </div>
-
       <CommnetsList />
     </>
   );
