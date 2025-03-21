@@ -14,6 +14,12 @@ export default function RecipeEdit() {
     recipeService.getOne(recipeId).then((result) => setRecipe(result));
   }, [recipeId]);
 
+  const formAction = async (formData) => {
+    const data = Object.fromEntries(formData);
+
+    await recipeService.edit(recipeId, data);
+
+    navigate(`/recipes/${recipeId}/details`);
   };
 
   return (

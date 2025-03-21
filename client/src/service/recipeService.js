@@ -1,3 +1,4 @@
+import formatData from "../components/utils/formatData";
 import { request } from "../components/utils/requester";
 
 const baseUrl = 'http://localhost:3030/jsonstore/recipes';
@@ -6,13 +7,7 @@ export default {
 
     async create(data) {
 
-        const recipeData = {
-            ...data,
-            prepTime: Number(data.prepTime),
-            cookTime: Number(data.cookTime),
-            ingredients: data.ingredients.split('\n'),
-            steps: data.steps.split('\n'),
-        }
+        const recipeData = formatData(data);
 
         const result = await request('POST', baseUrl, recipeData);
 
@@ -33,5 +28,15 @@ export default {
         const recipe = await request('GET', `${baseUrl}/${recipeId}`);
 
         return recipe;
+    },
+
+    async edit(recipeId, data) {
+
+        const recipeData = formatData(data);
+
+        const result = await request('PUT', `${baseUrl}/${recipeId}`, { ...recipeData, _id: recipeId });
+
+        return result;
     }
 }
+
