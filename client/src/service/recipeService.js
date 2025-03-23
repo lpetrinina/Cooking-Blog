@@ -14,6 +14,10 @@ export default {
         return result;
     },
 
+    delete(recipeId) {
+        return request('DELETE', `${baseUrl}/${recipeId}`)
+    },
+
     async getAll() {
 
         const result = await request('GET', baseUrl);
@@ -37,6 +41,8 @@ export default {
         const result = await request('PUT', `${baseUrl}/${recipeId}`, { ...recipeData, _id: recipeId });
 
         return result;
-    }
+    },
+
+
 }
 

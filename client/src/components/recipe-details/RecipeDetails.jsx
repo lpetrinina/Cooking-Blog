@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 
 import CommnetsList from "../comments/CommentsList";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
@@ -8,14 +8,22 @@ import styles from "./RecipeDetails.module.css";
 import recipeService from "../../service/recipeService";
 
 export default function RecipeDetails() {
+const
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState({});
   const { recipeId } = useParams();
-
-  console.log(recipe);
 
   useEffect(() => {
     recipeService.getOne(recipeId).then((data) => setRecipe(data));
   }, [recipeId]);
+
+  const recipeDeleteHandler = async () => {
+
+    // TODO: add modal 
+    await recipeService.delete(recipeId);
+
+    navigate("/recipes");
+  };
 
   return (
     <>
@@ -112,7 +120,7 @@ export default function RecipeDetails() {
                 </Link>
               </div>
               <div className="rounded-md shadow">
-                <PrimaryBtn>Delete</PrimaryBtn>
+                <PrimaryBtn onClick={recipeDeleteHandler}>Delete</PrimaryBtn>
               </div>
             </div>
           </section>
