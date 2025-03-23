@@ -8,7 +8,6 @@ import styles from "./RecipeDetails.module.css";
 import recipeService from "../../service/recipeService";
 
 export default function RecipeDetails() {
-const
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState({});
   const { recipeId } = useParams();
@@ -18,8 +17,7 @@ const
   }, [recipeId]);
 
   const recipeDeleteHandler = async () => {
-
-    // TODO: add modal 
+    // TODO: add modal
     await recipeService.delete(recipeId);
 
     navigate("/recipes");

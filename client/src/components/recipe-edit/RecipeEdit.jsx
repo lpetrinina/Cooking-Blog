@@ -25,7 +25,7 @@ export default function RecipeEdit() {
   return (
     <>
       <div className="flex flex-col justify-center bg-white sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-lg">
+        <div className="sm:mx-auto sm:w-full sm:max-w-xl">
           <div className="bg-gradient-to-t from-white to-pink-100 px-4 py-8 shadow-lg sm:rounded-lg sm:px-10">
             {/* <!-- Header --> */}
             <div className={styles["header"]}>
