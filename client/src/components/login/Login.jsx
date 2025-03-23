@@ -1,13 +1,19 @@
 import { Link, useNavigate } from "react-router";
-import PrimaryBtn from "../common/buttons/PrimaryBtn";
-import styles from "./Login.module.css";
 import { useActionState } from "react";
+
+import PrimaryBtn from "../common/buttons/PrimaryBtn";
+import { useLogin } from "../api/authApi";
+
+import styles from "./Login.module.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useLogin();
 
-  const loginHandler = (previousState, formData) => {
+  const loginHandler = async (previousState, formData) => {
     const data = Object.fromEntries(formData);
+
+    const result = await login(data.email, data.password);
 
     navigate("/recipes");
 
