@@ -1,8 +1,24 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./Login.module.css";
+import { useActionState } from "react";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const loginHandler = (previousState, formData) => {
+    const data = Object.fromEntries(formData);
+
+    navigate("/recipes");
+
+    return data;
+  };
+
+  const [state, loginAction, isPending] = useActionState(loginHandler, {
+    email: "",
+    password: "",
+  });
+
   return (
     <>
       <div className="flex flex-col justify-center bg-white py-12 sm:px-6 lg:px-8">
@@ -14,16 +30,16 @@ export default function Login() {
             </div>
 
             {/* <!-- Form --> */}
-            <form className="space-y-7">
+            <form className="space-y-7" action={loginAction}>
               {/* <!-- Email --> */}
               <div className={styles["filed"]}>
-                <input type="email" id="email" required />
+                <input type="email" id="email" name="email" required />
                 <label htmlFor="email">Email Address</label>
               </div>
 
               {/* <!-- Password --> */}
               <div className={styles["filed"]}>
-                <input type="password" id="password" required />
+                <input type="password" id="password" name="password" required />
                 <label htmlFor="password">Password</label>
               </div>
 
