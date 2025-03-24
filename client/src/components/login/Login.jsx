@@ -1,19 +1,22 @@
 import { Link, useNavigate } from "react-router";
-import { useActionState } from "react";
+import { useActionState, useContext } from "react";
 
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import { useLogin } from "../api/authApi";
 
 import styles from "./Login.module.css";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { userLoginHandler } = useContext(UserContext);
   const { login } = useLogin();
 
   const loginHandler = async (previousState, formData) => {
     const data = Object.fromEntries(formData);
 
-    const result = await login(data.email, data.password);
+    const authData = await login(data.email, data.password);
+    userLoginHandler(authData);
 
     navigate("/recipes");
 
