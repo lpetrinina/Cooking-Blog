@@ -1,10 +1,11 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('http'), require('fs'), require('crypto')) :
-    typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
-}(this, (function (http, fs, crypto) { 'use strict';
+        typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
+            (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
+}(this, (function (http, fs, crypto) {
+    'use strict';
 
-    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+    function _interopDefaultLegacy(e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
     var http__default = /*#__PURE__*/_interopDefaultLegacy(http);
     var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
@@ -13,14 +14,14 @@
     class ServiceError extends Error {
         constructor(message = 'Service Error') {
             super(message);
-            this.name = 'ServiceError'; 
+            this.name = 'ServiceError';
         }
     }
 
     class NotFoundError extends ServiceError {
         constructor(message = 'Resource not found') {
             super(message);
-            this.name = 'NotFoundError'; 
+            this.name = 'NotFoundError';
             this.status = 404;
         }
     }
@@ -28,7 +29,7 @@
     class RequestError extends ServiceError {
         constructor(message = 'Request error') {
             super(message);
-            this.name = 'RequestError'; 
+            this.name = 'RequestError';
             this.status = 400;
         }
     }
@@ -36,7 +37,7 @@
     class ConflictError extends ServiceError {
         constructor(message = 'Resource conflict') {
             super(message);
-            this.name = 'ConflictError'; 
+            this.name = 'ConflictError';
             this.status = 409;
         }
     }
@@ -44,7 +45,7 @@
     class AuthorizationError extends ServiceError {
         constructor(message = 'Unauthorized') {
             super(message);
-            this.name = 'AuthorizationError'; 
+            this.name = 'AuthorizationError';
             this.status = 401;
         }
     }
@@ -52,7 +53,7 @@
     class CredentialError extends ServiceError {
         constructor(message = 'Forbidden') {
             super(message);
-            this.name = 'CredentialError'; 
+            this.name = 'CredentialError';
             this.status = 403;
         }
     }
@@ -563,8 +564,8 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
-    		if (query.distinct) {
+
+            if (query.distinct) {
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
                     const key = props.map(p => c[p]).join('::');
@@ -800,7 +801,7 @@
     }
 
     function onRequest(context, tokens, query, body) {
-        Object.entries(body).forEach(([k,v]) => {
+        Object.entries(body).forEach(([k, v]) => {
             console.log(`${k} ${v ? 'enabled' : 'disabled'}`);
             context.util[k] = v;
         });
@@ -938,7 +939,7 @@
          * @param {Object} data Value to store. Shallow merge will be performed!
          * @return {Object} Updated entry.
          */
-         function merge(collection, id, data) {
+        function merge(collection, id, data) {
             if (!collections.has(collection)) {
                 throw new ReferenceError('Collection does not exist: ' + collection);
             }
@@ -1325,359 +1326,389 @@
 
     var identity = "email";
     var protectedData = {
-    	users: {
-    		"35c62d76-8152-4626-8712-eeb96381bea8": {
-    			email: "peter@abv.bg",
-    			username: "Peter",
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
-    		},
-    		"847ec027-f659-4086-8032-5173e2f9c93a": {
-    			email: "george@abv.bg",
-    			username: "George",
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
-    		},
-    		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-    			email: "admin@abv.bg",
-    			username: "Admin",
-    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
-    		}
-    	},
-    	sessions: {
-    	}
+        users: {
+            "35c62d76-8152-4626-8712-eeb96381bea8": {
+                email: "peter@abv.bg",
+                username: "Peter",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+            },
+            "847ec027-f659-4086-8032-5173e2f9c93a": {
+                email: "george@abv.bg",
+                username: "George",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+            },
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+                email: "admin@abv.bg",
+                username: "Admin",
+                hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
+            }
+        },
+        sessions: {
+        }
     };
     var seedData = {
-    	recipes: {
-    		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Easy Lasagna",
-    			img: "assets/lasagna.jpg",
-    			ingredients: [
-    				"1 tbsp Ingredient 1",
-    				"2 cups Ingredient 2",
-    				"500 g  Ingredient 3",
-    				"25 g Ingredient 4"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551279012
-    		},
-    		"8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Grilled Duck Fillet",
-    			img: "assets/roast.jpg",
-    			ingredients: [
-    				"500 g  Ingredient 1",
-    				"3 tbsp Ingredient 2",
-    				"2 cups Ingredient 3"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551344360
-    		},
-    		"985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Roast Trout",
-    			img: "assets/fish.jpg",
-    			ingredients: [
-    				"4 cups Ingredient 1",
-    				"1 tbsp Ingredient 2",
-    				"1 tbsp Ingredient 3",
-    				"750 g  Ingredient 4",
-    				"25 g Ingredient 5"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551388703
-    		}
-    	},
-    	comments: {
-    		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			content: "Great recipe!",
-    			recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
-    			_createdOn: 1614260681375,
-    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
-    		}
-    	},
-    	records: {
-    		i01: {
-    			name: "John1",
-    			val: 1,
-    			_createdOn: 1613551388703
-    		},
-    		i02: {
-    			name: "John2",
-    			val: 1,
-    			_createdOn: 1613551388713
-    		},
-    		i03: {
-    			name: "John3",
-    			val: 2,
-    			_createdOn: 1613551388723
-    		},
-    		i04: {
-    			name: "John4",
-    			val: 2,
-    			_createdOn: 1613551388733
-    		},
-    		i05: {
-    			name: "John5",
-    			val: 2,
-    			_createdOn: 1613551388743
-    		},
-    		i06: {
-    			name: "John6",
-    			val: 3,
-    			_createdOn: 1613551388753
-    		},
-    		i07: {
-    			name: "John7",
-    			val: 3,
-    			_createdOn: 1613551388763
-    		},
-    		i08: {
-    			name: "John8",
-    			val: 2,
-    			_createdOn: 1613551388773
-    		},
-    		i09: {
-    			name: "John9",
-    			val: 3,
-    			_createdOn: 1613551388783
-    		},
-    		i10: {
-    			name: "John10",
-    			val: 1,
-    			_createdOn: 1613551388793
-    		}
-    	},
-    	catches: {
-    		"07f260f4-466c-4607-9a33-f7273b24f1b4": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			angler: "Paulo Admorim",
-    			weight: 636,
-    			species: "Atlantic Blue Marlin",
-    			location: "Vitoria, Brazil",
-    			bait: "trolled pink",
-    			captureTime: 80,
-    			_createdOn: 1614760714812,
-    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
-    		},
-    		"bdabf5e9-23be-40a1-9f14-9117b6702a9d": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			angler: "John Does",
-    			weight: 554,
-    			species: "Atlantic Blue Marlin",
-    			location: "Buenos Aires, Argentina",
-    			bait: "trolled pink",
-    			captureTime: 120,
-    			_createdOn: 1614760782277,
-    			_id: "bdabf5e9-23be-40a1-9f14-9117b6702a9d"
-    		}
-    	},
-    	furniture: {
-    	},
-    	orders: {
-    	},
-    	movies: {
-    		"1240549d-f0e0-497e-ab99-eb8f703713d7": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Black Widow",
-    			description: "Natasha Romanoff aka Black Widow confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Comes on the screens 2020.",
-    			img: "https://miro.medium.com/max/735/1*akkAa2CcbKqHsvqVusF3-w.jpeg",
-    			_createdOn: 1614935055353,
-    			_id: "1240549d-f0e0-497e-ab99-eb8f703713d7"
-    		},
-    		"143e5265-333e-4150-80e4-16b61de31aa0": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Wonder Woman 1984",
-    			description: "Diana must contend with a work colleague and businessman, whose desire for extreme wealth sends the world down a path of destruction, after an ancient artifact that grants wishes goes missing.",
-    			img: "https://pbs.twimg.com/media/ETINgKwWAAAyA4r.jpg",
-    			_createdOn: 1614935181470,
-    			_id: "143e5265-333e-4150-80e4-16b61de31aa0"
-    		},
-    		"a9bae6d8-793e-46c4-a9db-deb9e3484909": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			title: "Top Gun 2",
-    			description: "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
-    			img: "https://i.pinimg.com/originals/f2/a4/58/f2a458048757bc6914d559c9e4dc962a.jpg",
-    			_createdOn: 1614935268135,
-    			_id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
-    		}
-    	},
-    	likes: {
-    	},
-    	ideas: {
-    		"833e0e57-71dc-42c0-b387-0ce0caf5225e": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Best Pilates Workout To Do At Home",
-    			description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima possimus eveniet ullam aspernatur corporis tempore quia nesciunt nostrum mollitia consequatur. At ducimus amet aliquid magnam nulla sed totam blanditiis ullam atque facilis corrupti quidem nisi iusto saepe, consectetur culpa possimus quos? Repellendus, dicta pariatur! Delectus, placeat debitis error dignissimos nesciunt magni possimus quo nulla, fuga corporis maxime minus nihil doloremque aliquam quia recusandae harum. Molestias dolorum recusandae commodi velit cum sapiente placeat alias rerum illum repudiandae? Suscipit tempore dolore autem, neque debitis quisquam molestias officia hic nesciunt? Obcaecati optio fugit blanditiis, explicabo odio at dicta asperiores distinctio expedita dolor est aperiam earum! Molestias sequi aliquid molestiae, voluptatum doloremque saepe dignissimos quidem quas harum quo. Eum nemo voluptatem hic corrupti officiis eaque et temporibus error totam numquam sequi nostrum assumenda eius voluptatibus quia sed vel, rerum, excepturi maxime? Pariatur, provident hic? Soluta corrupti aspernatur exercitationem vitae accusantium ut ullam dolor quod!",
-    			img: "./images/best-pilates-youtube-workouts-2__medium_4x3.jpg",
-    			_createdOn: 1615033373504,
-    			_id: "833e0e57-71dc-42c0-b387-0ce0caf5225e"
-    		},
-    		"247efaa7-8a3e-48a7-813f-b5bfdad0f46c": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "4 Eady DIY Idea To Try!",
-    			description: "Similique rem culpa nemo hic recusandae perspiciatis quidem, quia expedita, sapiente est itaque optio enim placeat voluptates sit, fugit dignissimos tenetur temporibus exercitationem in quis magni sunt vel. Corporis officiis ut sapiente exercitationem consectetur debitis suscipit laborum quo enim iusto, labore, quod quam libero aliquid accusantium! Voluptatum quos porro fugit soluta tempore praesentium ratione dolorum impedit sunt dolores quod labore laudantium beatae architecto perspiciatis natus cupiditate, iure quia aliquid, iusto modi esse!",
-    			img: "./images/brightideacropped.jpg",
-    			_createdOn: 1615033452480,
-    			_id: "247efaa7-8a3e-48a7-813f-b5bfdad0f46c"
-    		},
-    		"b8608c22-dd57-4b24-948e-b358f536b958": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			title: "Dinner Recipe",
-    			description: "Consectetur labore et corporis nihil, officiis tempora, hic ex commodi sit aspernatur ad minima? Voluptas nesciunt, blanditiis ex nulla incidunt facere tempora laborum ut aliquid beatae obcaecati quidem reprehenderit consequatur quis iure natus quia totam vel. Amet explicabo quidem repellat unde tempore et totam minima mollitia, adipisci vel autem, enim voluptatem quasi exercitationem dolor cum repudiandae dolores nostrum sit ullam atque dicta, tempora iusto eaque! Rerum debitis voluptate impedit corrupti quibusdam consequatur minima, earum asperiores soluta. A provident reiciendis voluptates et numquam totam eveniet! Dolorum corporis libero dicta laborum illum accusamus ullam?",
-    			img: "./images/dinner.jpg",
-    			_createdOn: 1615033491967,
-    			_id: "b8608c22-dd57-4b24-948e-b358f536b958"
-    		}
-    	},
-    	catalog: {
-    		"53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			make: "Table",
-    			model: "Swedish",
-    			year: 2015,
-    			description: "Medium table",
-    			price: 235,
-    			img: "./images/table.png",
-    			material: "Hardwood",
-    			_createdOn: 1615545143015,
-    			_id: "53d4dbf5-7f41-47ba-b485-43eccb91cb95"
-    		},
-    		"f5929b5c-bca4-4026-8e6e-c09e73908f77": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			make: "Sofa",
-    			model: "ES-549-M",
-    			year: 2018,
-    			description: "Three-person sofa, blue",
-    			price: 1200,
-    			img: "./images/sofa.jpg",
-    			material: "Frame - steel, plastic; Upholstery - fabric",
-    			_createdOn: 1615545572296,
-    			_id: "f5929b5c-bca4-4026-8e6e-c09e73908f77"
-    		},
-    		"c7f51805-242b-45ed-ae3e-80b68605141b": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			make: "Chair",
-    			model: "Bright Dining Collection",
-    			year: 2017,
-    			description: "Dining chair",
-    			price: 180,
-    			img: "./images/chair.jpg",
-    			material: "Wood laminate; leather",
-    			_createdOn: 1615546332126,
-    			_id: "c7f51805-242b-45ed-ae3e-80b68605141b"
-    		}
-    	},
-    	teams: {
-    		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Storm Troopers",
-    			logoUrl: "/assets/atat.png",
-    			description: "These ARE the droids we're looking for",
-    			_createdOn: 1615737591748,
-    			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
-    		},
-    		"dc888b1a-400f-47f3-9619-07607966feb8": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Team Rocket",
-    			logoUrl: "/assets/rocket.png",
-    			description: "Gotta catch 'em all!",
-    			_createdOn: 1615737655083,
-    			_id: "dc888b1a-400f-47f3-9619-07607966feb8"
-    		},
-    		"733fa9a1-26b6-490d-b299-21f120b2f53a": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Minions",
-    			logoUrl: "/assets/hydrant.png",
-    			description: "Friendly neighbourhood jelly beans, helping evil-doers succeed.",
-    			_createdOn: 1615737688036,
-    			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
-    		}
-    	},
-    	members: {
-    		"cc9b0a0f-655d-45d7-9857-0a61c6bb2c4d": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
-    			status: "member",
-    			_createdOn: 1616236790262,
-    			_updatedOn: 1616236792930
-    		},
-    		"61a19986-3b86-4347-8ca4-8c074ed87591": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
-    			status: "member",
-    			_createdOn: 1616237188183,
-    			_updatedOn: 1616237189016
-    		},
-    		"8a03aa56-7a82-4a6b-9821-91349fbc552f": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			teamId: "733fa9a1-26b6-490d-b299-21f120b2f53a",
-    			status: "member",
-    			_createdOn: 1616237193355,
-    			_updatedOn: 1616237195145
-    		},
-    		"9be3ac7d-2c6e-4d74-b187-04105ab7e3d6": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
-    			status: "member",
-    			_createdOn: 1616237231299,
-    			_updatedOn: 1616237235713
-    		},
-    		"280b4a1a-d0f3-4639-aa54-6d9158365152": {
-    			_ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-    			teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
-    			status: "member",
-    			_createdOn: 1616237257265,
-    			_updatedOn: 1616237278248
-    		},
-    		"e797fa57-bf0a-4749-8028-72dba715e5f8": {
-    			_ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-    			teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
-    			status: "member",
-    			_createdOn: 1616237272948,
-    			_updatedOn: 1616237293676
-    		}
-    	}
+        recipes: [
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "title": "Peanut Butter Banana Baked Oatmeal",
+                "description": "Delicious double chocolate peanut butter banana baked oatmeal naturally sweetened with ripe banana, pure maple syrup, and of course, your fav chocolate chips! This chocolate peanut butter baked oatmeal recipe is packed with protein, fiber and healthy fats for a nutritious breakfast you’ll make again and again.",
+                "prepTime": 15,
+                "cookTime": 25,
+                "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2022/07/Double-Chocolate-Peanut-Butter-Banana-Baked-Oatmeal-7-594x594.jpg",
+                "ingredients": [
+                    "1 heaping cup of ripe mashed banana (from 2 medium/large extra ripe bananas)",
+                    "1/2 cup creamy or crunchy natural peanut butter (just peanuts + salt)",
+                    "2 eggs",
+                    "1/4 cup pure maple syrup",
+                    "3/4 cup unsweetened vanilla almond milk or oat milk (or milk of choice)",
+                    "1 teaspoon vanilla extract",
+                    "1 1/2 cups old fashioned rolled oats, gluten free if desired",
+                    "1/3 cup unsweetened cocoa powder or cacao powder",
+                    "1 teaspoon baking powder",
+                    "1/4 teaspoon salt",
+                    "1/2 cup chocolate chips (dairy free, if desired)"
+                ],
+                "steps": [
+                    "Preheat the oven to 350 degrees F. Grease a 9x9 inch baking dish with nonstick cooking spray.",
+                    "In a large bowl, add 1 cup of mashed banana, peanut butter, eggs, maple syrup, milk of choice and vanilla extract. Whisk until well combined.",
+                    "Add the dry ingredients to the wet ingredients: oats, cocoa powder, baking powder and salt. Mix until well incorporated. Stir in the chocolate chips.",
+                    "Pour into the prepared baking dish and spread out evenly. Dollop with teaspoonfuls of peanut butter on top, then use a knife to swirl, just about 3-4 times. Don’t go overboard with the swirling or the oatmeal won’t look pretty. Finally top the oatmeal with 2 tablespoons chocolate chips.",
+                    "Bake for 25-30 minutes or until the oatmeal is set in the middle. Remove and allow to cool for 10 minutes before sprinkling with a little sea salt and serving. I love serving this warm in a bowl with a little milk or with raspberries on top, but you do you!"
+                ],
+                "_createdOn": 1742902624478,
+                "_id": "dd34b19c-aa7f-4831-b839-69435f9da504"
+            },
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "title": "Ridiculously Good Wild Blueberry Muffin Smoothie",
+                "description": "Ridiculously good blueberry smoothie made with wild blueberries that tastes just like a freshly baked blueberry muffin! This nutritious blueberry muffin smoothie is naturally sweetened without banana, has a boost of protein from greek yogurt, and is filled with muffin flavor thanks to rolled oats & flaxseed. Optional flavor add-ins included for this delicious breakfast or snack!",
+                "prepTime": 5,
+                "cookTime": 0,
+                "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2022/05/Wild-Blueberry-Muffin-Smoothie-5-594x594.jpg",
+                "ingredients": [
+                    "1 cup frozen wild blueberries (they have the best flavor!)",
+                    "2 large Medjool dates, pitted and softened if necessary",
+                    "1/2 cup vanilla greek yogurt (plain also works but vanilla has better flavor!)",
+                    "1/2 teaspoon vanilla extract",
+                    "1 tablespoon flaxseed meal",
+                    "1 tablespoon hemp hearts",
+                    "1/4 cup rolled oats, gluten free if desired",
+                    "2/3 cup unsweetened oat or almond milk (or sub any milk of choice!)"
+                ],
+                "steps": [
+                    "Add all ingredients to a high powered blender: blueberries, dates, yogurt, flaxseed meal, hemp hearts, rolled oats and milk. Feel free to add any optional add-ins to your smoothie if you’d like. Blend until smooth, adding more milk to thin, if necessary. Pour into a glass and enjoy!"
+                ],
+                "_createdOn": 1742902825656,
+                "_id": "a47a0f88-1566-4ebc-bc09-f5100e7f96d2"
+            },
+            {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "title": "Brown Butter Strawberry Baked Oatmeal",
+                "description": "Beautiful brown butter strawberry baked oatmeal with a light strawberry glaze. This easy strawberry baked oatmeal is naturally sweetened with a little pure maple syrup and makes the perfect nourishing breakfast or brunch for spring and summer!",
+                "prepTime": 20,
+                "cookTime": 35,
+                "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2024/02/Brown-Butter-Strawberry-Baked-Oatmeal-7-594x594.jpg",
+                "ingredients": [
+                    "4 tablespoons (56 grams) salted butter, sliced",
+                    "2 large eggs",
+                    "1 1/2 cups (360 grams) milk of choice",
+                    "1/4 cup (78 grams) pure maple syrup",
+                    "1 teaspoon vanilla extract",
+                    "1/4 teaspoon almond extract",
+                    "2 cups (180 grams) rolled oats (gluten-free if desired)",
+                    "1 teaspoon baking powder",
+                    "1/4 teaspoon kosher salt",
+                    "1 1/2 cups (225 grams) sliced fresh strawberries, divided"
+                ],
+                "steps": [
+                    "Preheat the oven: Preheat the oven to 350°F. Grease an 8-inch square pan with cooking spray.",
+                    "Brown the butter: Add the butter to a small saucepan and melt over medium heat. Once melted, whisk constantly: the butter will begin to crackle, then foam. After a few minutes, the butter will begin to turn a golden amber color. As soon as the butter turns brown and gives off a nutty aroma, 5 to 8 minutes, remove from heat and set aside to cool for 5 minutes.",
+                    "In a large bowl, whisk the eggs, milk, maple syrup, vanilla extract, and almond extract until smooth and combined.",
+                    "Add the oats, baking powder, and salt, and mix with a wooden spoon until combined. Stir in the cooled brown butter until well combined. Next, fold in HALF of the strawberries."
+                ],
+                "_createdOn": 1742903330627,
+                "_id": "584a0175-e02a-41f4-ba24-9be68b4d73ff"
+            }
+        ],
+        comments: {
+            "0a272c58-b7ea-4e09-a000-7ec988248f66": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                content: "Great recipe!",
+                recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
+                _createdOn: 1614260681375,
+                _id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+            }
+        },
+        records: {
+            i01: {
+                name: "John1",
+                val: 1,
+                _createdOn: 1613551388703
+            },
+            i02: {
+                name: "John2",
+                val: 1,
+                _createdOn: 1613551388713
+            },
+            i03: {
+                name: "John3",
+                val: 2,
+                _createdOn: 1613551388723
+            },
+            i04: {
+                name: "John4",
+                val: 2,
+                _createdOn: 1613551388733
+            },
+            i05: {
+                name: "John5",
+                val: 2,
+                _createdOn: 1613551388743
+            },
+            i06: {
+                name: "John6",
+                val: 3,
+                _createdOn: 1613551388753
+            },
+            i07: {
+                name: "John7",
+                val: 3,
+                _createdOn: 1613551388763
+            },
+            i08: {
+                name: "John8",
+                val: 2,
+                _createdOn: 1613551388773
+            },
+            i09: {
+                name: "John9",
+                val: 3,
+                _createdOn: 1613551388783
+            },
+            i10: {
+                name: "John10",
+                val: 1,
+                _createdOn: 1613551388793
+            }
+        },
+        catches: {
+            "07f260f4-466c-4607-9a33-f7273b24f1b4": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                angler: "Paulo Admorim",
+                weight: 636,
+                species: "Atlantic Blue Marlin",
+                location: "Vitoria, Brazil",
+                bait: "trolled pink",
+                captureTime: 80,
+                _createdOn: 1614760714812,
+                _id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
+            },
+            "bdabf5e9-23be-40a1-9f14-9117b6702a9d": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                angler: "John Does",
+                weight: 554,
+                species: "Atlantic Blue Marlin",
+                location: "Buenos Aires, Argentina",
+                bait: "trolled pink",
+                captureTime: 120,
+                _createdOn: 1614760782277,
+                _id: "bdabf5e9-23be-40a1-9f14-9117b6702a9d"
+            }
+        },
+        furniture: {
+        },
+        orders: {
+        },
+        movies: {
+            "1240549d-f0e0-497e-ab99-eb8f703713d7": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Black Widow",
+                description: "Natasha Romanoff aka Black Widow confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Comes on the screens 2020.",
+                img: "https://miro.medium.com/max/735/1*akkAa2CcbKqHsvqVusF3-w.jpeg",
+                _createdOn: 1614935055353,
+                _id: "1240549d-f0e0-497e-ab99-eb8f703713d7"
+            },
+            "143e5265-333e-4150-80e4-16b61de31aa0": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Wonder Woman 1984",
+                description: "Diana must contend with a work colleague and businessman, whose desire for extreme wealth sends the world down a path of destruction, after an ancient artifact that grants wishes goes missing.",
+                img: "https://pbs.twimg.com/media/ETINgKwWAAAyA4r.jpg",
+                _createdOn: 1614935181470,
+                _id: "143e5265-333e-4150-80e4-16b61de31aa0"
+            },
+            "a9bae6d8-793e-46c4-a9db-deb9e3484909": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Top Gun 2",
+                description: "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
+                img: "https://i.pinimg.com/originals/f2/a4/58/f2a458048757bc6914d559c9e4dc962a.jpg",
+                _createdOn: 1614935268135,
+                _id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
+            }
+        },
+        likes: {
+        },
+        ideas: {
+            "833e0e57-71dc-42c0-b387-0ce0caf5225e": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Best Pilates Workout To Do At Home",
+                description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima possimus eveniet ullam aspernatur corporis tempore quia nesciunt nostrum mollitia consequatur. At ducimus amet aliquid magnam nulla sed totam blanditiis ullam atque facilis corrupti quidem nisi iusto saepe, consectetur culpa possimus quos? Repellendus, dicta pariatur! Delectus, placeat debitis error dignissimos nesciunt magni possimus quo nulla, fuga corporis maxime minus nihil doloremque aliquam quia recusandae harum. Molestias dolorum recusandae commodi velit cum sapiente placeat alias rerum illum repudiandae? Suscipit tempore dolore autem, neque debitis quisquam molestias officia hic nesciunt? Obcaecati optio fugit blanditiis, explicabo odio at dicta asperiores distinctio expedita dolor est aperiam earum! Molestias sequi aliquid molestiae, voluptatum doloremque saepe dignissimos quidem quas harum quo. Eum nemo voluptatem hic corrupti officiis eaque et temporibus error totam numquam sequi nostrum assumenda eius voluptatibus quia sed vel, rerum, excepturi maxime? Pariatur, provident hic? Soluta corrupti aspernatur exercitationem vitae accusantium ut ullam dolor quod!",
+                img: "./images/best-pilates-youtube-workouts-2__medium_4x3.jpg",
+                _createdOn: 1615033373504,
+                _id: "833e0e57-71dc-42c0-b387-0ce0caf5225e"
+            },
+            "247efaa7-8a3e-48a7-813f-b5bfdad0f46c": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "4 Eady DIY Idea To Try!",
+                description: "Similique rem culpa nemo hic recusandae perspiciatis quidem, quia expedita, sapiente est itaque optio enim placeat voluptates sit, fugit dignissimos tenetur temporibus exercitationem in quis magni sunt vel. Corporis officiis ut sapiente exercitationem consectetur debitis suscipit laborum quo enim iusto, labore, quod quam libero aliquid accusantium! Voluptatum quos porro fugit soluta tempore praesentium ratione dolorum impedit sunt dolores quod labore laudantium beatae architecto perspiciatis natus cupiditate, iure quia aliquid, iusto modi esse!",
+                img: "./images/brightideacropped.jpg",
+                _createdOn: 1615033452480,
+                _id: "247efaa7-8a3e-48a7-813f-b5bfdad0f46c"
+            },
+            "b8608c22-dd57-4b24-948e-b358f536b958": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Dinner Recipe",
+                description: "Consectetur labore et corporis nihil, officiis tempora, hic ex commodi sit aspernatur ad minima? Voluptas nesciunt, blanditiis ex nulla incidunt facere tempora laborum ut aliquid beatae obcaecati quidem reprehenderit consequatur quis iure natus quia totam vel. Amet explicabo quidem repellat unde tempore et totam minima mollitia, adipisci vel autem, enim voluptatem quasi exercitationem dolor cum repudiandae dolores nostrum sit ullam atque dicta, tempora iusto eaque! Rerum debitis voluptate impedit corrupti quibusdam consequatur minima, earum asperiores soluta. A provident reiciendis voluptates et numquam totam eveniet! Dolorum corporis libero dicta laborum illum accusamus ullam?",
+                img: "./images/dinner.jpg",
+                _createdOn: 1615033491967,
+                _id: "b8608c22-dd57-4b24-948e-b358f536b958"
+            }
+        },
+        catalog: {
+            "53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                make: "Table",
+                model: "Swedish",
+                year: 2015,
+                description: "Medium table",
+                price: 235,
+                img: "./images/table.png",
+                material: "Hardwood",
+                _createdOn: 1615545143015,
+                _id: "53d4dbf5-7f41-47ba-b485-43eccb91cb95"
+            },
+            "f5929b5c-bca4-4026-8e6e-c09e73908f77": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                make: "Sofa",
+                model: "ES-549-M",
+                year: 2018,
+                description: "Three-person sofa, blue",
+                price: 1200,
+                img: "./images/sofa.jpg",
+                material: "Frame - steel, plastic; Upholstery - fabric",
+                _createdOn: 1615545572296,
+                _id: "f5929b5c-bca4-4026-8e6e-c09e73908f77"
+            },
+            "c7f51805-242b-45ed-ae3e-80b68605141b": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                make: "Chair",
+                model: "Bright Dining Collection",
+                year: 2017,
+                description: "Dining chair",
+                price: 180,
+                img: "./images/chair.jpg",
+                material: "Wood laminate; leather",
+                _createdOn: 1615546332126,
+                _id: "c7f51805-242b-45ed-ae3e-80b68605141b"
+            }
+        },
+        teams: {
+            "34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Storm Troopers",
+                logoUrl: "/assets/atat.png",
+                description: "These ARE the droids we're looking for",
+                _createdOn: 1615737591748,
+                _id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
+            },
+            "dc888b1a-400f-47f3-9619-07607966feb8": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                name: "Team Rocket",
+                logoUrl: "/assets/rocket.png",
+                description: "Gotta catch 'em all!",
+                _createdOn: 1615737655083,
+                _id: "dc888b1a-400f-47f3-9619-07607966feb8"
+            },
+            "733fa9a1-26b6-490d-b299-21f120b2f53a": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                name: "Minions",
+                logoUrl: "/assets/hydrant.png",
+                description: "Friendly neighbourhood jelly beans, helping evil-doers succeed.",
+                _createdOn: 1615737688036,
+                _id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
+            }
+        },
+        members: {
+            "cc9b0a0f-655d-45d7-9857-0a61c6bb2c4d": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
+                status: "member",
+                _createdOn: 1616236790262,
+                _updatedOn: 1616236792930
+            },
+            "61a19986-3b86-4347-8ca4-8c074ed87591": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
+                status: "member",
+                _createdOn: 1616237188183,
+                _updatedOn: 1616237189016
+            },
+            "8a03aa56-7a82-4a6b-9821-91349fbc552f": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                teamId: "733fa9a1-26b6-490d-b299-21f120b2f53a",
+                status: "member",
+                _createdOn: 1616237193355,
+                _updatedOn: 1616237195145
+            },
+            "9be3ac7d-2c6e-4d74-b187-04105ab7e3d6": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
+                status: "member",
+                _createdOn: 1616237231299,
+                _updatedOn: 1616237235713
+            },
+            "280b4a1a-d0f3-4639-aa54-6d9158365152": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
+                status: "member",
+                _createdOn: 1616237257265,
+                _updatedOn: 1616237278248
+            },
+            "e797fa57-bf0a-4749-8028-72dba715e5f8": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
+                status: "member",
+                _createdOn: 1616237272948,
+                _updatedOn: 1616237293676
+            }
+        }
     };
     var rules$1 = {
-    	users: {
-    		".create": false,
-    		".read": [
-    			"Owner"
-    		],
-    		".update": false,
-    		".delete": false
-    	},
-    	members: {
-    		".update": "isOwner(user, get('teams', data.teamId))",
-    		".delete": "isOwner(user, get('teams', data.teamId)) || isOwner(user, data)",
-    		"*": {
-    			teamId: {
-    				".update": "newData.teamId = data.teamId"
-    			},
-    			status: {
-    				".create": "newData.status = 'pending'"
-    			}
-    		}
-    	}
+        users: {
+            ".create": false,
+            ".read": [
+                "Owner"
+            ],
+            ".update": false,
+            ".delete": false
+        },
+        members: {
+            ".update": "isOwner(user, get('teams', data.teamId))",
+            ".delete": "isOwner(user, get('teams', data.teamId)) || isOwner(user, data)",
+            "*": {
+                teamId: {
+                    ".update": "newData.teamId = data.teamId"
+                },
+                status: {
+                    ".create": "newData.status = 'pending'"
+                }
+            }
+        }
     };
     var settings = {
-    	identity: identity,
-    	protectedData: protectedData,
-    	seedData: seedData,
-    	rules: rules$1
+        identity: identity,
+        protectedData: protectedData,
+        seedData: seedData,
+        rules: rules$1
     };
 
     const plugins = [
