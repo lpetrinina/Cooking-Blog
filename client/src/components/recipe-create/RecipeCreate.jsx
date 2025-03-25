@@ -1,19 +1,32 @@
+import { useActionState } from "react";
 import { useNavigate } from "react-router";
-import recipeService from "../../service/recipeService";
-import PrimaryBtn from "../common/buttons/PrimaryBtn";
 
+import { useCreateRecipe } from "../api/recipeApi";
+
+import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./RecipeCreate.module.css";
 
 export default function RecipeCreate() {
   const navigate = useNavigate();
+  const { create } = useCreateRecipe();
 
-  const submitionAction = async (formData) => {
+  const submitHandler = async (previousState, formData) => {
     const recipeData = Object.fromEntries(formData);
 
-    await recipeService.create(recipeData);
+    await create(recipeData);
 
     navigate("/");
   };
+
+  const [state, submitionAction, isPending] = useActionState(submitHandler, {
+    title: "",
+    description: "",
+    prepTime: "",
+    cookTime: "",
+    imageUrl: "",
+    ingredients: "",
+    steps: "",
+  });
 
   return (
     <>
@@ -28,7 +41,7 @@ export default function RecipeCreate() {
             {/* <!-- Form --> */}
             <form className="space-y-6" action={submitionAction}>
               {/* <!-- Title --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <input
                   type="text"
                   id="title"
@@ -39,7 +52,7 @@ export default function RecipeCreate() {
               </div>
 
               {/* <!-- Description --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <textarea
                   id="description"
                   name="description"
@@ -49,7 +62,7 @@ export default function RecipeCreate() {
               </div>
 
               {/* <!-- Preparation time --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <input
                   type="text"
                   id="prepTime"
@@ -60,7 +73,7 @@ export default function RecipeCreate() {
               </div>
 
               {/* <!-- Cook time --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <input
                   type="text"
                   id="cookTime"
@@ -71,7 +84,7 @@ export default function RecipeCreate() {
               </div>
 
               {/* <!-- Image --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <input
                   type="text"
                   id="imageUrl"
@@ -82,7 +95,7 @@ export default function RecipeCreate() {
               </div>
 
               {/* <!-- Ingredients --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <textarea
                   id="ingredients"
                   name="ingredients"
@@ -92,7 +105,7 @@ export default function RecipeCreate() {
               </div>
 
               {/* <!-- Steps --> */}
-              <div className={styles["filed"]}>
+              <div className={styles["field"]}>
                 <textarea
                   id="steps"
                   name="steps"
