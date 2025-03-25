@@ -42,5 +42,22 @@ export const useAllRecipes = () => {
         isPending,
         recipes
     }
+}
+
+//use hook on mount
+export const useOneRecipe = (recipeId) => {
+    const [recipe, setRecipe] = useState({});
+    const [isPending, setPending] = useState(true);
+
+    useEffect(() => {
+        request('GET', `${baseUrl}/${recipeId}`)
+            .then((data) => setRecipe(data))
+            .then(() => setPending(false));
+    }, [])
+
+    return {
+        recipe,
+        isPending
+    }
 
 }

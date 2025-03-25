@@ -1347,8 +1347,8 @@
         }
     };
     var seedData = {
-        recipes: [
-            {
+        recipes: {
+            "dd34b19c-aa7f-4831-b839-69435f9da504": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "title": "Peanut Butter Banana Baked Oatmeal",
                 "description": "Delicious double chocolate peanut butter banana baked oatmeal naturally sweetened with ripe banana, pure maple syrup, and of course, your fav chocolate chips! This chocolate peanut butter baked oatmeal recipe is packed with protein, fiber and healthy fats for a nutritious breakfast you’ll make again and again.",
@@ -1378,7 +1378,7 @@
                 "_createdOn": 1742902624478,
                 "_id": "dd34b19c-aa7f-4831-b839-69435f9da504"
             },
-            {
+            "a47a0f88-1566-4ebc-bc09-f5100e7f96d2": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "title": "Ridiculously Good Wild Blueberry Muffin Smoothie",
                 "description": "Ridiculously good blueberry smoothie made with wild blueberries that tastes just like a freshly baked blueberry muffin! This nutritious blueberry muffin smoothie is naturally sweetened without banana, has a boost of protein from greek yogurt, and is filled with muffin flavor thanks to rolled oats & flaxseed. Optional flavor add-ins included for this delicious breakfast or snack!",
@@ -1401,7 +1401,7 @@
                 "_createdOn": 1742902825656,
                 "_id": "a47a0f88-1566-4ebc-bc09-f5100e7f96d2"
             },
-            {
+            "584a0175-e02a-41f4-ba24-9be68b4d73ff": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
                 "title": "Brown Butter Strawberry Baked Oatmeal",
                 "description": "Beautiful brown butter strawberry baked oatmeal with a light strawberry glaze. This easy strawberry baked oatmeal is naturally sweetened with a little pure maple syrup and makes the perfect nourishing breakfast or brunch for spring and summer!",
@@ -1429,7 +1429,7 @@
                 "_createdOn": 1742903330627,
                 "_id": "584a0175-e02a-41f4-ba24-9be68b4d73ff"
             }
-        ],
+        },
         comments: {
             "0a272c58-b7ea-4e09-a000-7ec988248f66": {
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
