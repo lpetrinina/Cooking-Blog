@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { NavLink } from "react-router";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Navigation({ navigation }) {
+  const { accessToken } = useContext(UserContext);
   return (
     <>
       <div className="hidden md:ml-8 md:flex md:space-x-9">
@@ -39,14 +42,16 @@ export default function Navigation({ navigation }) {
         >
           Profile
         </NavLink> */}
-        <NavLink
-          to={"/create"}
-          className={({ isActive }) =>
-            isActive ? navStyles.activeStyle : navStyles.hoverStyle
-          }
-        >
-          Create
-        </NavLink>
+        {accessToken && (
+          <NavLink
+            to={"/create"}
+            className={({ isActive }) =>
+              isActive ? navStyles.activeStyle : navStyles.hoverStyle
+            }
+          >
+            Create
+          </NavLink>
+        )}
       </div>
     </>
   );

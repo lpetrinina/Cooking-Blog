@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,6 +12,7 @@ export default function Header() {
     setMobileMenuOpen((mobileMenuOpen) => !mobileMenuOpen);
   };
 
+  const { accessToken } = useContext(UserContext);
   return (
     <>
       {/* <!-- Sticky Navbar with Dropdown --> */}
@@ -34,18 +36,30 @@ export default function Header() {
             <div className="flex items-center">
               <div className="hidden md:ml-4 md:flex md:items-center">
                 <div className="flex justify-between gap-3">
-                  <Link
-                    to="/login"
-                    className="rounded-md px-4 py-2 text-sm font-medium text-pink-400 hover:ring-1 hover:ring-pink-400 focus:outline-none focus:ring-1 focus:ring-pink-400 focus:ring-offset-1"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    to="/sign-up"
-                    className="rounded-md bg-pink-400 px-4 py-2 text-sm font-medium text-white hover:bg-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:ring-offset-1"
-                  >
-                    Sign up
-                  </Link>
+                  {accessToken ? (
+                    <Link
+                      to="/logout"
+                      className="rounded-md px-4 py-2 text-sm font-medium text-pink-400 hover:ring-1 hover:ring-pink-400 focus:outline-none focus:ring-1 focus:ring-pink-400 focus:ring-offset-1"
+                    >
+                      Logout
+                    </Link>
+                  ) : (
+                    <>
+                      <Link
+                        to="/login"
+                        className="rounded-md px-4 py-2 text-sm font-medium text-pink-400 hover:ring-1 hover:ring-pink-400 focus:outline-none focus:ring-1 focus:ring-pink-400 focus:ring-offset-1"
+                      >
+                        Login
+                      </Link>
+
+                      <Link
+                        to="/sign-up"
+                        className="rounded-md bg-pink-400 px-4 py-2 text-sm font-medium text-white hover:bg-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:ring-offset-1"
+                      >
+                        Sign up
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
 
