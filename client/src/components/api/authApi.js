@@ -1,4 +1,6 @@
+import { useContext, useEffect } from "react";
 import { request } from "../utils/requester";
+import { UserContext } from "../../contexts/UserContext";
 
 const baseURL = 'http://localhost:3030/users';
 
@@ -30,4 +32,31 @@ export const useRegister = () => {
     return {
         register
     }
+}
+
+// use hook on mount
+export const useLogout = () => {
+    const { accessToken, userLogoutHandler } = useContext(UserContext);
+
+    useEffect(() => {
+
+        if (!accessToken) {
+            return
+        }
+
+        const options = {
+            headers: {
+                'X-Authorization': accessToken
+            }
+        };
+
+        request('GET', `${baseURL}/logout`, null, options)
+            .then(() => userLogoutHandler());
+
+    }, [accessToken, userLogoutHandler])
+
+    return {
+        isLoggedOut: !!accessToken
+    }
+
 }

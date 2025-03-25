@@ -14,6 +14,7 @@ import RecipeDetails from "./components/recipe-details/RecipeDetails";
 import RecipeCreate from "./components/recipe-create/RecipeCreate";
 import RecipeEdit from "./components/recipe-edit/RecipeEdit";
 import Footer from "./components/footer/Footer";
+import Logout from "./components/logout/Logout";
 
 function App() {
   const [authData, setAuthData] = useState(null);
@@ -22,9 +23,15 @@ function App() {
     setAuthData(currentUserData);
   };
 
+  const userLogoutHandler = () => {
+    setAuthData(null);
+  };
+
   return (
     <>
-      <UserContext.Provider value={{ ...authData, userLoginHandler }}>
+      <UserContext.Provider
+        value={{ ...authData, userLoginHandler, userLogoutHandler }}
+      >
         <Header />
 
         <div className="bg-white pt-16">
@@ -34,6 +41,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/logout" element={<Logout />} />
                 <Route path="/recipes" element={<Catalog />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/create" element={<RecipeCreate />} />
