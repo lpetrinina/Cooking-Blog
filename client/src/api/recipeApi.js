@@ -1,19 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import formatData from "../utils/formatData"
+import { useEffect, useState } from "react";
+
 import { request } from "../utils/requester";
-import { UserContext } from "../../contexts/UserContext";
+import formatData from "../utils/formatData"
+import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/recipes';
 
 //use hook on event
 export const useCreateRecipe = () => {
-    const { accessToken } = useContext(UserContext);
-
-    const options = {
-        headers: {
-            'X-Authorization': accessToken
-        }
-    };
+    const { options } = useAuth();
 
     const create = (data) => {
         const recipeData = formatData(data);
@@ -59,5 +54,5 @@ export const useOneRecipe = (recipeId) => {
         recipe,
         isPending
     }
-
 }
+

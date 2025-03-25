@@ -1,7 +1,7 @@
 import { useActionState } from "react";
 import { useNavigate } from "react-router";
 
-import { useCreateRecipe } from "../api/recipeApi";
+import { useCreateRecipe } from "../../api/recipeApi";
 
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./RecipeCreate.module.css";

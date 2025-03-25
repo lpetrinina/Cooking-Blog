@@ -5,7 +5,7 @@ import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import Spinner from "../common/spinner/Spinner";
 
 import recipeService from "../../service/recipeService";
-import { useOneRecipe } from "../api/recipeApi";
+import { useOneRecipe } from "../../api/recipeApi";
 
 import styles from "./RecipeDetails.module.css";
 

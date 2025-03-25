@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import { useActionState, useContext } from "react";
 
-import { useRegister } from "../api/authApi";
+import { useRegister } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./SignUp.module.css";

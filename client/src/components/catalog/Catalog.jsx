@@ -1,7 +1,6 @@
-import { useAllRecipes } from "../api/recipeApi";
-
 import RecipeItem from "./RecipeItem";
 import Spinner from "../common/spinner/Spinner";
+import { useAllRecipes } from "../../api/recipeApi";
 
 export default function Catalog() {
   const { isPending, recipes } = useAllRecipes();
