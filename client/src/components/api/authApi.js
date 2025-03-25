@@ -15,5 +15,19 @@ export const useLogin = () => {
     return {
         login,
     }
+}
 
+// use hook on event
+export const useRegister = () => {
+
+    const register = async (username, email, password) => {
+
+        const authData = await request('POST', `${baseURL}/register`, { username, email, password });
+
+        return authData;
+    }
+
+    return {
+        register
+    }
 }
