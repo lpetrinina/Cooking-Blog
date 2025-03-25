@@ -19,7 +19,10 @@ export const request = async (method, url, data, options = {}) => {
 
     const responce = await fetch(url, options);
 
-    // TODO: Authorized GET request to /users/logout. The service returns an empty response - if you attempt to parse it as JSON, you will receive an error! You can check for this type of response by looking at the status (204 instead of 200)
+
+    if (responce.status === 204) {
+        return;
+    }
 
     const result = await responce.json();
 
