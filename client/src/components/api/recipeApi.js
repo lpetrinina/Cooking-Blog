@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import formatData from "../utils/formatData"
 import { request } from "../utils/requester";
 import { UserContext } from "../../contexts/UserContext";
@@ -23,6 +23,24 @@ export const useCreateRecipe = () => {
 
     return {
         create
+    }
+}
+
+//use hook on mount
+export const useAllRecipes = () => {
+    const [recipes, setRecipes] = useState([]);
+    const [isPending, setPending] = useState(true);
+
+    useEffect(() => {
+        request('GET', baseUrl)
+            .then((data) => setRecipes(data))
+            .then(() => setPending(false))
+
+    }, []);
+
+    return {
+        isPending,
+        recipes
     }
 
 }

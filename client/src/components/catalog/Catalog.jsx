@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useAllRecipes } from "../api/recipeApi";
+
 import RecipeItem from "./RecipeItem";
-import recipeService from "../../service/recipeService";
+import Spinner from "../common/spinner/Spinner";
 
 export default function Catalog() {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    recipeService.getAll().then((result) => setRecipes(result));
-  }, []);
+  const { isPending, recipes } = useAllRecipes();
 
   return (
     <>
@@ -18,18 +15,24 @@ export default function Catalog() {
         </div>
       </div>
 
-      {recipes.length > 0 && (
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-          {recipes.map((recipe) => (
-            <RecipeItem key={recipe._id} {...recipe} />
-          ))}
-        </div>
-      )}
+      {isPending ? (
+        <Spinner />
+      ) : (
+        <>
+          {recipes.length > 0 && (
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+              {recipes.map((recipe) => (
+                <RecipeItem key={recipe._id} {...recipe} />
+              ))}
+            </div>
+          )}
 
-      {recipes.length === 0 && (
-        <p className="mt-28 text-center text-xl font-bold tracking-wide text-gray-500">
-          There is no recipe yet!
-        </p>
+          {recipes.length === 0 && (
+            <p className="mt-28 text-center text-xl font-bold tracking-wide text-gray-500">
+              There is no recipe yet!
+            </p>
+          )}
+        </>
       )}
     </>
   );
