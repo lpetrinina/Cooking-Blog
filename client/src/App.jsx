@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router";
-import { UserContext } from "./contexts/UserContext";
 
-import usePersistedState from "./hooks/usePersistedState";
+import UserProvider from "./components/providers/UserProvider";
 
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
@@ -17,21 +16,9 @@ import Logout from "./components/logout/Logout";
 import "./App.css";
 
 function App() {
-  const [authData, setAuthData] = usePersistedState("auth", null);
-
-  const userLoginHandler = (currentUserData) => {
-    setAuthData(currentUserData);
-  };
-
-  const userLogoutHandler = () => {
-    setAuthData(null);
-  };
-
   return (
     <>
-      <UserContext.Provider
-        value={{ ...authData, userLoginHandler, userLogoutHandler }}
-      >
+      <UserProvider>
         <Header />
 
         <div className="bg-white pt-16">
@@ -59,7 +46,7 @@ function App() {
 
           <Footer />
         </div>
-      </UserContext.Provider>
+      </UserProvider>
     </>
   );
 }
