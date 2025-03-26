@@ -44,7 +44,7 @@ export default function Navigation({ navigation }) {
         </NavLink> */}
         {accessToken && (
           <NavLink
-            to={"/create"}
+            to={"/recipes/create"}
             className={({ isActive }) =>
               isActive ? navStyles.activeStyle : navStyles.hoverStyle
             }
