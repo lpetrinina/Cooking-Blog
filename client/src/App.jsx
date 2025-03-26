@@ -15,6 +15,7 @@ import Footer from "./components/footer/Footer";
 import Logout from "./components/logout/Logout";
 import "./App.css";
 import AuthGuard from "./components/guards/AuthGuard";
+import GuestGuard from "./components/guards/GuestGuard";
 
 function App() {
   return (
@@ -43,8 +44,10 @@ function App() {
                   <Route path="/logout" element={<Logout />} />
                 </Route>
 
-                <Route path="/login" element={<Login />} />
-                <Route path="/sign-up" element={<SignUp />} />
+                <Route element={<GuestGuard />}>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/sign-up" element={<SignUp />} />
+                </Route>
               </Routes>
             </div>
           </div>
