@@ -43,8 +43,11 @@ function App() {
                   />
                   <Route path="/logout" element={<Logout />} />
                 </Route>
+
+                <Route element={<GuestGuard />}>
                   <Route path="/login" element={<Login />} />
                   <Route path="/sign-up" element={<SignUp />} />
+                </Route>
               </Routes>
             </div>
           </div>
