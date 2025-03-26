@@ -71,3 +71,15 @@ export const useEditRecipe = () => {
         edit
     }
 }
+
+export const useDeleteRecipe = () => {
+    const { options } = useAuth();
+
+    const deleteRecipe = (recipeId) => {
+        return request('DELETE', `${baseUrl}/${recipeId}`, null, options)
+    }
+
+    return {
+        deleteRecipe
+    }
+}

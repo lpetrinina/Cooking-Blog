@@ -1,13 +1,14 @@
-import PrimaryBtn from "../../common/buttons/PrimaryBtn";
-import SecondaryBtn from "../../common/buttons/SecondaryBtn";
+import PrimaryBtn from "../buttons/PrimaryBtn";
+import SecondaryBtn from "../buttons/SecondaryBtn";
 
-export default function DeleteComment() {
+export default function DeleteModal({ componentName, onCancel, onDelete }) {
   return (
     <div className="fixed inset-0 z-40 flex min-h-full items-center overflow-y-auto overflow-x-hidden transition">
       {/* <!-- overlay --> */}
       <div
         aria-hidden="true"
         className="fixed inset-0 h-full w-full cursor-pointer bg-black/50"
+        onClick={onCancel}
       ></div>
 
       {/* <!-- Modal --> */}
@@ -29,13 +30,14 @@ export default function DeleteComment() {
           </svg>
 
           <p className="mb-10 mt-5 text-center text-lg font-bold">
-            Are you sure you want to delete this comment?
+            Are you sure you want to delete this {componentName}?
           </p>
 
           <button
             type="button"
             className="absolute right-2 top-2 rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-pink-300 hover:text-white focus:outline-none focus:ring-1 focus:ring-inset focus:ring-pink-400 rtl:left-2 rtl:right-auto"
             data-modal-toggle="product-modal"
+            onClick={onCancel}
           >
             <svg
               className="h-5 w-5"
@@ -53,11 +55,11 @@ export default function DeleteComment() {
 
           <div className="mt-10 flex flex-col justify-center gap-3 sm:mt-6 sm:flex sm:flex-row sm:justify-center lg:justify-center">
             <div className="rounded-md shadow">
-              <PrimaryBtn>Delete</PrimaryBtn>
+              <PrimaryBtn onClick={onDelete}>Yes, I'm sure</PrimaryBtn>
             </div>
 
             <div className="rounded-md shadow">
-              <SecondaryBtn>Cancel</SecondaryBtn>
+              <SecondaryBtn onClick={onCancel}>Cancel</SecondaryBtn>
             </div>
           </div>
         </div>

@@ -1,24 +1,31 @@
 import { Link, useNavigate, useParams } from "react-router";
+import { useState } from "react";
 
 import CommnetsList from "../comments/CommentsList";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import Spinner from "../common/spinner/Spinner";
+import DeleteModal from "../common/modal/DeleteModal";
 
-import recipeService from "../../service/recipeService";
-import { useOneRecipe } from "../../api/recipeApi";
-
+import { useDeleteRecipe, useOneRecipe } from "../../api/recipeApi";
 import styles from "./RecipeDetails.module.css";
 
 export default function RecipeDetails() {
   const navigate = useNavigate();
   const { recipeId } = useParams();
   const { recipe, isPending } = useOneRecipe(recipeId);
+  const { deleteRecipe } = useDeleteRecipe();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const recipeDeleteHandler = async () => {
-    // TODO: add modal
-    await recipeService.delete(recipeId);
+  console.log(recipe._ownerId);
+
+  const clickDeleteHadler = () => {
+    deleteRecipe(recipeId);
 
     navigate("/recipes");
+  };
+
+  const clickCancelHandler = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -121,7 +128,7 @@ export default function RecipeDetails() {
                   </div>
 
                   <div className="rounded-md shadow">
-                    <PrimaryBtn onClick={recipeDeleteHandler}>
+                    <PrimaryBtn onClick={() => setIsOpen(!isOpen)}>
                       Delete
                     </PrimaryBtn>
                   </div>
@@ -129,6 +136,14 @@ export default function RecipeDetails() {
               </section>
             </div>
           </div>
+
+          {isOpen && (
+            <DeleteModal
+              componentName={"recipe"}
+              onCancel={clickCancelHandler}
+              onDelete={clickDeleteHadler}
+            />
+          )}
 
           <CommnetsList />
         </>
