@@ -8,7 +8,7 @@ export default function RecipeItem({
   cookTime,
   imageUrl,
 }) {
-  const shortDescription = description.slice().split(/[.!]/)[0];
+  const shortDescription = description.slice().split(/[,.!]/)[0];
   const recipeTime = prepTime + cookTime;
 
   return (

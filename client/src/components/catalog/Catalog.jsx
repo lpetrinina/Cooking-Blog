@@ -1,4 +1,4 @@
-import RecipeItem from "./RecipeItem";
+import RecipeItem from "../recipe-item/RecipeItem";
 import Spinner from "../common/spinner/Spinner";
 import { useAllRecipes } from "../../api/recipeApi";
 

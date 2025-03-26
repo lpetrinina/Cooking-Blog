@@ -34,7 +34,7 @@ export default function RecipeDetails() {
         <Spinner />
       ) : (
         <>
-          <div className={styles.wrapper}>
+          <div className={styles["wrapper"]}>
             <div className={styles["container"]}>
               <header className={`${styles["section-header"]}`}>
                 <div className={styles["text-container"]}>
