@@ -28,7 +28,12 @@ export const useAllRecipes = () => {
     const [isPending, setPending] = useState(true);
 
     useEffect(() => {
-        request('GET', baseUrl)
+
+        const serchParams = new URLSearchParams({
+            select: '_id,title,description,prepTime,cookTime,imageUrl'
+        })
+
+        request('GET', `${baseUrl}?${serchParams}`)
             .then((data) => setRecipes(data))
             .then(() => setPending(false))
 
@@ -52,6 +57,7 @@ export const useLatestRecipes = () => {
         const serchParams = new URLSearchParams({
             sortBy: '_createdOn desc',
             pageSize: PAGE_SIZE,
+            select: '_id,title,description,prepTime,cookTime,imageUrl'
         })
 
         request('GET', `${baseUrl}?${serchParams.toString()}`)
