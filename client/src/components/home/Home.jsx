@@ -1,6 +1,11 @@
-import RecipeItem from "../catalog/RecipeItem";
+import { Link } from "react-router";
+import { useLatestRecipes } from "../../api/recipeApi";
+import Spinner from "../common/spinner/Spinner";
+import RecipeItem from "../recipe-item/RecipeItem";
 
 export default function Home() {
+  const { latestRecipes, isPending } = useLatestRecipes();
+
   return (
     <>
       <div className="mb-5 flex justify-between border-b text-sm">
@@ -10,21 +15,37 @@ export default function Home() {
             alt=""
             className="h-4 w-auto"
           />
-
-          <a href="#" className="ml-2 inline-block font-semibold">
-            Most Popular
-          </a>
+          <p className="ml-2 inline-block font-semibold">Latest recipes</p>
         </div>
-        <a href="#">See All</a>
+
+        <Link
+          to={"/recipes"}
+          className="text-sm italic text-gray-500 hover:text-pink-400"
+        >
+          See more &rarr;
+        </Link>
       </div>
 
-      {/* The most liked 3 posts */}
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-        {/* <!-- CARD 1 --> */}
-        <RecipeItem />
-        <RecipeItem />
-        <RecipeItem />
-      </div>
+      {/* The latest three added recipes */}
+      {isPending ? (
+        <Spinner />
+      ) : (
+        <>
+          {latestRecipes.length > 0 && (
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+              {latestRecipes.map((recipe) => (
+                <RecipeItem key={recipe._id} {...recipe} />
+              ))}
+            </div>
+          )}
+
+          {latestRecipes.length === 0 && (
+            <p className="mt-28 text-center text-xl font-bold tracking-wide text-gray-500">
+              There is no recipe yet!
+            </p>
+          )}
+        </>
+      )}
     </>
   );
 }

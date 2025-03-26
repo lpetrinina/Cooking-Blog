@@ -21,6 +21,7 @@ export const useCreateRecipe = () => {
     }
 }
 
+
 //use hook on mount
 export const useAllRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -37,6 +38,32 @@ export const useAllRecipes = () => {
         isPending,
         recipes
     }
+}
+
+
+//use on mount
+export const useLatestRecipes = () => {
+    const [latestRecipes, setLatestRecipes] = useState([]);
+    const [isPending, setPending] = useState(true);
+
+    const PAGE_SIZE = 3;
+
+    useEffect(() => {
+        const serchParams = new URLSearchParams({
+            sortBy: '_createdOn desc',
+            pageSize: PAGE_SIZE,
+        })
+
+        request('GET', `${baseUrl}?${serchParams.toString()}`)
+            .then((data) => setLatestRecipes(data))
+            .then(() => setPending(false))
+    }, [])
+
+    return {
+        latestRecipes,
+        isPending
+    };
+
 }
 
 //use hook on mount
