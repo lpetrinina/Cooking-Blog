@@ -56,3 +56,18 @@ export const useOneRecipe = (recipeId) => {
     }
 }
 
+// use hook on event
+export const useEditRecipe = () => {
+    const { options } = useAuth();
+
+    const edit = async (recipeId, data) => {
+
+        const recipeData = formatData(data);
+
+        return await request('PUT', `${baseUrl}/${recipeId}`, { ...recipeData, _id: recipeId }, options);
+    }
+
+    return {
+        edit
+    }
+}
