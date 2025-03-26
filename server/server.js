@@ -1428,6 +1428,94 @@
                 ],
                 "_createdOn": 1742903330627,
                 "_id": "584a0175-e02a-41f4-ba24-9be68b4d73ff"
+            },
+            "ef6aae54-886f-4dd7-b4e5-8b6bec62f813": {
+                "title": "Pumpkin Pie",
+                "description": "Creamy healthier pumpkin pie made from scratch and naturally sweetened with pure maple syrup. This easy-to-make healthy pumpkin pie recipe will knock your socks off! Serve with dairy free or regular ice cream, or a little whipped cream for a treat.",
+                "prepTime": 30,
+                "cookTime": 60,
+                "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2022/10/Healthy-Pumpkin-Pie-4-594x594.jpg",
+                "ingredients": [
+                    "1 pie crust",
+                    "1 (425g) can pumpkin puree",
+                    "3 eggs",
+                    "1/4 cup (78g) pure maple syrup",
+                    "1/4 cup (39g) coconut sugar (or organic cane sugar)",
+                    "1/4 cup (60g) unsweetened almond milk (any milk will work)",
+                    "1 teaspoon vanilla extract",
+                    "1 1/2 teaspoons cinnamon",
+                    "1/2 teaspoon nutmeg",
+                    "1/2 teaspoon ground ginger",
+                    "1/2 teaspoon allspice",
+                    "1/4 teaspoon salt"
+                ],
+                "steps": [
+                    "Preheat oven to 350 degrees F.",
+                    "In a large bowl, add the pumpkin puree, eggs, pure maple syrup, coconut sugar (or regular sugar) almond milk, vanilla, cinnamon, nutmeg, ground ginger, allspice and salt. Mix until well combined and completely smooth. Pour into pie pan.",
+                    "Bake for 50-60 minutes until filling is no longer jiggly. Check pie after every 20 minutes to make sure crust isn't burning. If it is getting a little too golden brown, simply cover pie edges with foil or a pie shield.",
+                    "Allow pie to cool for at least an hour before serving. Pie should be kept in fridge once completely cool. Top with whipped cream or ice cream. Store pie in fridge. "
+                ],
+                "_id": "ef6aae54-886f-4dd7-b4e5-8b6bec62f813",
+                "_createdOn": 1742983456025,
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "_updatedOn": 1742983599721
+            },
+            "2cc4971d-ee2f-447d-9be4-ceab62050cef": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "title": "No Bake Superfood Brownies",
+                "description": "The best no bake brownies packed with healthy fats, fiber, and protein from four types of nuts, dried fruit and chia seeds. These superfood brownie energy bars are vegan, gluten free, naturally sweetened, and taste just like a fudgy brownie! The perfect nutritious treat or snack.",
+                "prepTime": 40,
+                "cookTime": 0,
+                "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2022/01/Raw-Superfood-Brownies-4-594x594.jpg",
+                "ingredients": [
+                    "1 cup (173g) packed pitted Medjool dates",
+                    "1/4 cup (28g) raw walnuts",
+                    "1/4 cup (28g) raw pecans halves",
+                    "1/2 cup (28g) shelled pistachios, divided",
+                    "1/4 cup (21g) unsweetened finely shredded coconut",
+                    "1 tablespoon chia seeds",
+                    "3 tablespoons unsweetened cacao powder (or cocoa powder)",
+                    "1 tablespoon melted virgin coconut oil",
+                    "1 teaspoon vanilla extract",
+                    "1/4 teaspoon sea salt",
+                    "1/4 cup (30g) dried cranberries (or dried cherries or goji berries)",
+                    "1 tablespoon warm water, if necessary",
+                    "2 ounces dark chocolate bar (vegan, if desired)",
+                    "1 tablespoon shelled chopped pistachios",
+                    "1 tablespoon dried cranberries, cherries or goji berries",
+                    "1 tablespoon chopped pecans,Maldon sea salt, for sprinkling on top"
+                ],
+                "steps": [
+                    "Add dates, walnuts, pecans, only ¼ cup of pistachios to the bowl of a food processor. Process until chunky. ",
+                    "Next add in unsweetened shredded coconut, chia seeds, cacao powder, coconut oil and vanilla extract. Process again until mixture is chunky and slightly clumping. If mixture is dry, add 1-2 tablespoons of warm water.",
+                    "Next add in remaining ¼ cup pistachios and dried cranberries and pulse again a few times until pistachios are slightly chunky. Add mixture into a 8x4 inch loaf pan lined with parchment paper, pressing evenly towards the sides of the pan.",
+                    "Add dark chocolate to a small saucepan and place over low heat until melted. You can also microwave in 30 second increments, stirring in between until chocolate is fully melted and smooth.",
+                    "Pour over the bars, tilting pan so that the chocolate covers the bars evenly. Garnish the bars with 1 tablespoon of the following: chopped pistachios, dried cranberries, and chopped pecans. Place bars in the freezer for 20-45 minutes to harden.",
+                    "Once ready to serve, sprinkle with Maldon sea salt then cut into 8 squares. Store safely covered in the freezer for up to 1 month."
+                ],
+                "_createdOn": 1742983948535,
+                "_id": "2cc4971d-ee2f-447d-9be4-ceab62050cef"
+            },
+            "4867e0e4-5b6c-44a7-aa4c-91c7db70fe98": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Healthier Hot Chocolate",
+                "description": "My favorite delicious healthy hot chocolate recipe that’s both vegan and dairy free! This dairy free hot chocolate recipe is made with a mix of both coconut milk and almond milk and is naturally sweetened with pure maple syrup. The perfect nightcap during the chilly winter months!",
+                "prepTime": 5,
+                "cookTime": 5,
+                "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2019/12/Healthier-Hot-Chocolate-5sq-594x594.jpg",
+                "ingredients": [
+                    "1 cup light coconut milk (from the can)",
+                    "1 1/2 cups unsweetened almond milk",
+                    "1/2 teaspoon vanilla extract",
+                    "2 tablespoons pure maple syrup",
+                    "2 tablespoons unsweetened cocoa powder,Pinch of sea salt"
+                ],
+                "steps": [
+                    "Add all ingredients to a small pot and place over medium low heat. Whisk vigorously to combine and to get rid of any lumps of cocoa. Do NOT let the hot chocolate boil or you risk burning the almond milk, which can turn the flavor into something you do not want. Simply warm in the pot until steamy, about 3-5 minutes.",
+                    "Once hot chocolate is hot, remove from heat and pour into 2 mugs. Top with whipped cream, dairy free whipped cream, marshmallows or vegan marshmallows. Chocolate shavings or a dusting of cocoa powder on top are fun too! Enjoy!"
+                ],
+                "_createdOn": 1742984270309,
+                "_id": "4867e0e4-5b6c-44a7-aa4c-91c7db70fe98"
             }
         },
         comments: {
