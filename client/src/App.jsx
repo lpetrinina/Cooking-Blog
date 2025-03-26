@@ -14,6 +14,7 @@ import RecipeEdit from "./components/recipe-edit/RecipeEdit";
 import Footer from "./components/footer/Footer";
 import Logout from "./components/logout/Logout";
 import "./App.css";
+import AuthGuard from "./components/guards/AuthGuard";
 
 function App() {
   return (
@@ -26,20 +27,24 @@ function App() {
             <div className="mx-auto mb-14 max-w-screen-xl bg-white p-5 sm:p-10 md:p-16">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/logout" element={<Logout />} />
                 <Route path="/recipes" element={<Catalog />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/create" element={<RecipeCreate />} />
                 <Route
                   path="/recipes/:recipeId/details"
                   element={<RecipeDetails />}
                 />
-                <Route
-                  path="/recipes/:recipeId/edit"
-                  element={<RecipeEdit />}
-                />
+
+                <Route element={<AuthGuard />}>
+                  <Route path="/recipes/create" element={<RecipeCreate />} />
+                  <Route
+                    path="/recipes/:recipeId/edit"
+                    element={<RecipeEdit />}
+                  />
+                  <Route path="/logout" element={<Logout />} />
+                </Route>
+
+                <Route path="/login" element={<Login />} />
+                <Route path="/sign-up" element={<SignUp />} />
               </Routes>
             </div>
           </div>

@@ -11,6 +11,7 @@ export default function useAuth() {
     };
 
     return {
+        isAuthenticated: !!authData.accessToken,
         authData,
         options
     }

@@ -46,7 +46,7 @@ export default function MobileNavigation({ navigation }) {
                 </NavLink> */}
         {accessToken && (
           <NavLink
-            to={"/create"}
+            to={"/recipes/create"}
             className={({ isActive }) =>
               isActive ? navStyles.activeStyle : navStyles.hoverStyle
             }
