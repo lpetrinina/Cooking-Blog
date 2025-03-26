@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router";
-import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 
-import "./App.css";
+import usePersistedState from "./hooks/usePersistedState";
 
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
@@ -15,9 +14,10 @@ import RecipeCreate from "./components/recipe-create/RecipeCreate";
 import RecipeEdit from "./components/recipe-edit/RecipeEdit";
 import Footer from "./components/footer/Footer";
 import Logout from "./components/logout/Logout";
+import "./App.css";
 
 function App() {
-  const [authData, setAuthData] = useState(null);
+  const [authData, setAuthData] = usePersistedState("auth", null);
 
   const userLoginHandler = (currentUserData) => {
     setAuthData(currentUserData);
