@@ -16,6 +16,7 @@ import Logout from "./components/logout/Logout";
 import "./App.css";
 import AuthGuard from "./components/guards/AuthGuard";
 import GuestGuard from "./components/guards/GuestGuard";
+import UserProfile from "./components/profile/UserProfil";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                     element={<RecipeEdit />}
                   />
                   <Route path="/logout" element={<Logout />} />
+                  <Route path="/profile" element={<UserProfile />} />
                 </Route>
 
                 <Route element={<GuestGuard />}>

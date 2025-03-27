@@ -36,23 +36,25 @@ export default function MobileNavigation({ navigation }) {
         </NavLink>
 
         {/* For logged users */}
-        {/* <NavLink
-                  to={"/profile"}
-                  className={({ isActive }) =>
-                    isActive ? navStyles.activeStyle : navStyles.hoverStyle
-                  }
-                >
-                  Profile
-                </NavLink> */}
         {accessToken && (
-          <NavLink
-            to={"/recipes/create"}
-            className={({ isActive }) =>
-              isActive ? navStyles.activeStyle : navStyles.hoverStyle
-            }
-          >
-            Create
-          </NavLink>
+          <>
+            <NavLink
+              to={"/profile"}
+              className={({ isActive }) =>
+                isActive ? navStyles.activeStyle : navStyles.hoverStyle
+              }
+            >
+              Profile
+            </NavLink>
+            <NavLink
+              to={"/recipes/create"}
+              className={({ isActive }) =>
+                isActive ? navStyles.activeStyle : navStyles.hoverStyle
+              }
+            >
+              Create
+            </NavLink>
+          </>
         )}
       </div>
 
