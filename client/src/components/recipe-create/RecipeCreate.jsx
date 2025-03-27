@@ -15,7 +15,7 @@ export default function RecipeCreate() {
 
     await create(recipeData);
 
-    navigate("/");
+    navigate("/recipes");
   };
 
   const [state, submitionAction, isPending] = useActionState(submitHandler, {
