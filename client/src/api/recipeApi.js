@@ -21,7 +21,6 @@ export const useCreateRecipe = () => {
     }
 }
 
-
 //use hook on mount
 export const useAllRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -44,7 +43,6 @@ export const useAllRecipes = () => {
         recipes
     }
 }
-
 
 //use on mount
 export const useLatestRecipes = () => {
@@ -69,7 +67,29 @@ export const useLatestRecipes = () => {
         latestRecipes,
         isPending
     };
+}
 
+//use hook on mount
+export const useRecipesByOwner = (ownerId) => {
+    const [recipes, setRecipes] = useState([]);
+    const [isPending, setPending] = useState(true);
+
+    useEffect(() => {
+        const serchParams = new URLSearchParams({
+            where: `_ownerId="${ownerId}"`,
+            select: '_id,title,description,imageUrl'
+        })
+
+        request('GET', `${baseUrl}?${serchParams.toString()}`)
+            .then(data => setRecipes(data))
+            .then(() => setPending(false));
+
+    }, [ownerId])
+
+    return {
+        recipes,
+        isPending
+    }
 }
 
 //use hook on mount
