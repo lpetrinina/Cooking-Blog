@@ -9,6 +9,7 @@ import DeleteModal from "../common/modal/DeleteModal";
 import { useDeleteRecipe, useOneRecipe } from "../../api/recipeApi";
 import styles from "./RecipeDetails.module.css";
 import useAuth from "../../hooks/useAuth";
+import { useDislikeRecipe, useLikeRecipe, useLikes } from "../../api/likesApi";
 
 export default function RecipeDetails() {
   const navigate = useNavigate();
@@ -17,6 +18,14 @@ export default function RecipeDetails() {
   const { recipe, isPending } = useOneRecipe(recipeId);
   const { deleteRecipe } = useDeleteRecipe();
   const [isOpen, setIsOpen] = useState(false);
+  const { isLiked, setIsLiked, likes, setLikes, likeId, setLikeId } =
+    useLikes(recipeId);
+  const { likeRecipe } = useLikeRecipe();
+  const { dislikeRecipe } = useDislikeRecipe();
+
+  console.log(isLiked);
+  console.log(likes);
+  console.log(likeId);
 
   const isOwner = recipe._ownerId === authData._id;
 
@@ -25,9 +34,25 @@ export default function RecipeDetails() {
 
     navigate("/recipes");
   };
-
   const clickCancelHandler = () => {
     setIsOpen(false);
+  };
+
+  const clickLikeHandler = async () => {
+    const data = await likeRecipe(recipeId);
+    setLikes((currentData) => [...currentData, data]);
+    setIsLiked(true);
+    setLikeId(data._id);
+  };
+
+  const clickDislikeHandler = async () => {
+    await dislikeRecipe(likeId);
+
+    setLikes((currentLikes) =>
+      currentLikes.filter((like) => like._id !== likeId),
+    );
+    setIsLiked(false);
+    setLikeId(null);
   };
 
   return (
@@ -68,7 +93,7 @@ export default function RecipeDetails() {
                   <div className={styles["recipe-feedback"]}>
                     <div className={styles["likes"]}>
                       <img src="/heart-svgrepo-com.svg" alt="" />
-                      <p> 36 Likes</p>
+                      <p> {likes.length} Likes</p>
                     </div>
 
                     <div className={styles["coments"]}>
@@ -113,7 +138,15 @@ export default function RecipeDetails() {
                     <>
                       <div className="mt-5 sm:mt-6 sm:flex sm:justify-center lg:justify-center">
                         <div className="rounded-md shadow">
-                          <PrimaryBtn>Like</PrimaryBtn>
+                          {isLiked ? (
+                            <PrimaryBtn onClick={clickDislikeHandler}>
+                              Dislike
+                            </PrimaryBtn>
+                          ) : (
+                            <PrimaryBtn onClick={clickLikeHandler}>
+                              Like
+                            </PrimaryBtn>
+                          )}
                         </div>
                       </div>
 
