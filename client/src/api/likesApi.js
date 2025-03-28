@@ -7,7 +7,7 @@ const baseUrl = 'http://localhost:3030/data/likes';
 
 // use hook on mount
 export const useLikes = (recipeId) => {
-    const { authData } = useAuth()
+    const { authData } = useAuth();
     const [isLiked, setIsLiked] = useState(null);
     const [likes, setLikes] = useState([]);
     const [likeId, setLikeId] = useState(null);
@@ -62,10 +62,9 @@ export const useDislikeRecipe = () => {
     const { options } = useAuth();
 
 
-    const dislikeRecipe = (recipeId) => {
+    const dislikeRecipe = (likeId) => {
 
-
-        return request('DELETE', `${baseUrl}/691cd6bd-3f7c-4848-9991-419301f41eb1`, null, options)
+        return request('DELETE', `${baseUrl}/${likeId}`, null, options)
     }
 
     return {
