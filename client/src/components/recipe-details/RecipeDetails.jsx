@@ -7,9 +7,9 @@ import Spinner from "../common/spinner/Spinner";
 import DeleteModal from "../common/modal/DeleteModal";
 
 import { useDeleteRecipe, useOneRecipe } from "../../api/recipeApi";
+import { useDislikeRecipe, useLikeRecipe, useLikes } from "../../api/likesApi";
 import styles from "./RecipeDetails.module.css";
 import useAuth from "../../hooks/useAuth";
-import { useDislikeRecipe, useLikeRecipe, useLikes } from "../../api/likesApi";
 
 export default function RecipeDetails() {
   const navigate = useNavigate();
@@ -22,10 +22,6 @@ export default function RecipeDetails() {
     useLikes(recipeId);
   const { likeRecipe } = useLikeRecipe();
   const { dislikeRecipe } = useDislikeRecipe();
-
-  console.log(isLiked);
-  console.log(likes);
-  console.log(likeId);
 
   const isOwner = recipe._ownerId === authData._id;
 

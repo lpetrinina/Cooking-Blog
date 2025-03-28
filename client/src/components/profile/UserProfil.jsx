@@ -1,4 +1,5 @@
-import { useRecipesByOwner } from "../../api/recipeApi";
+import { useLikesByOwner } from "../../api/likesApi";
+import { useLikedRecipes, useRecipesByOwner } from "../../api/recipeApi";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../common/spinner/Spinner";
 import RecipeItemBasic from "../recipe-item/RecipeItemBasic";
@@ -6,6 +7,9 @@ import RecipeItemBasic from "../recipe-item/RecipeItemBasic";
 export default function UserProfile() {
   const { authData } = useAuth();
   const { recipes, isPending } = useRecipesByOwner(authData._id);
+
+  const { likedRecipesIds } = useLikesByOwner();
+  const { likedRecipes } = useLikedRecipes(likedRecipesIds);
 
   return (
     <>
@@ -48,24 +52,27 @@ export default function UserProfile() {
           )}
         </div>
 
-        {/* <div>
+        <div>
           <div className="mb-7 flex justify-between border-b text-sm">
             <div className="flex items-center border-b-2 border-pink-400 pb-2 pr-2 uppercase text-pink-600">
               <p className="ml-2 inline-block font-semibold">Liked Recipes</p>
             </div>
           </div>
 
-          <p className="mb-10 mt-28 text-center text-lg font-bold tracking-wide text-gray-500">
-         You have no recipes in this category.
-          </p>
+          {likedRecipes.length > 0 && (
+            <div className="mx-auto flex flex-col flex-wrap justify-between gap-4 md:flex md:flex-row">
+              {likedRecipes.map((recipe) => (
+                <RecipeItemBasic key={recipe._id} {...recipe} />
+              ))}
+            </div>
+          )}
 
-          <div className="mx-auto flex flex-col flex-wrap justify-between gap-4 md:flex md:flex-row">
-            <RecipeItemBasic />
-            <RecipeItemBasic />
-            <RecipeItemBasic />
-            <RecipeItemBasic />
-          </div>
-        </div> */}
+          {likedRecipes.length === 0 && (
+            <p className="mb-10 mt-28 text-center text-lg font-bold tracking-wide text-gray-500">
+              You have no recipes in this category.
+            </p>
+          )}
+        </div>
       </div>
     </>
   );

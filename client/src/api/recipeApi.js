@@ -92,6 +92,32 @@ export const useRecipesByOwner = (ownerId) => {
     }
 }
 
+export const useLikedRecipes = (likedRecipesIds) => {
+
+    const [likedRecipes, setLikedRecipes] = useState([]);
+
+
+    useEffect(() => {
+
+        const searchRecipeInfoParams = new URLSearchParams({
+            select: '_id,title,description,imageUrl'
+        })
+
+        if (likedRecipesIds.length > 0) {
+            Promise.all(likedRecipesIds.map(id =>
+                request('GET', `${baseUrl}/${id}?${searchRecipeInfoParams.toString()}`)))
+                .then(result => setLikedRecipes(result))
+
+        }
+
+    }, [likedRecipesIds])
+
+    return {
+        likedRecipes,
+
+    }
+}
+
 //use hook on mount
 export const useOneRecipe = (recipeId) => {
     const [recipe, setRecipe] = useState({});

@@ -71,3 +71,29 @@ export const useDislikeRecipe = () => {
         dislikeRecipe
     }
 }
+
+
+export const useLikesByOwner = () => {
+    const { authData } = useAuth();
+    const userId = authData._id;
+
+    const [likedRecipesIds, setLikedRecipesIds] = useState([]);
+
+    useEffect(() => {
+
+        const serchParams = new URLSearchParams({
+            where: `_ownerId="${userId}"`,
+            select: 'recipeId'
+        })
+
+        request('GET', `${baseUrl}?${serchParams.toString()}`)
+            .then(result => result.length > 0 ? setLikedRecipesIds(result.map(item => item.recipeId)) : [])
+
+    }, [])
+
+
+    return {
+        likedRecipesIds
+    }
+}
+
