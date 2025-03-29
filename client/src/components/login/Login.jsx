@@ -1,32 +1,51 @@
 import { Link, useNavigate } from "react-router";
-import { useActionState, useContext } from "react";
+import { useContext, useState } from "react";
 
-import PrimaryBtn from "../common/buttons/PrimaryBtn";
+import { useValidateLoginForm } from "../../utils/validateForm";
 import { useLogin } from "../../api/authApi";
-
-import styles from "./Login.module.css";
 import { UserContext } from "../../contexts/UserContext";
+import PrimaryBtn from "../common/buttons/PrimaryBtn";
+import styles from "./Login.module.css";
 
 export default function Login() {
   const navigate = useNavigate();
   const { userLoginHandler } = useContext(UserContext);
   const { login } = useLogin();
 
-  const loginHandler = async (previousState, formData) => {
-    const data = Object.fromEntries(formData);
+  const { validateEmail, validatePassword } = useValidateLoginForm();
 
-    const authData = await login(data.email, data.password);
-    userLoginHandler(authData);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    navigate("/recipes");
+  const [emailErrorMsg, setEmailErrorMsg] = useState(null);
+  const [passErrorMsg, setPassErrorMsg] = useState(null);
 
-    return data;
+  const handleEmailValue = (e) => {
+    setEmail(e.target.value);
+  };
+  const showEmailError = (e) => {
+    const err = validateEmail(email);
+    setEmailErrorMsg(err);
   };
 
-  const [state, loginAction, isPending] = useActionState(loginHandler, {
-    email: "",
-    password: "",
-  });
+  const handlePassValue = (e) => {
+    setPassword(e.target.value);
+  };
+  const showPassError = () => {
+    const err = validatePassword(password);
+    setPassErrorMsg(err);
+  };
+
+  const loginSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    if (!emailErrorMsg && !passErrorMsg) {
+      const authData = await login(email, password);
+      userLoginHandler(authData);
+
+      navigate("/recipes");
+    }
+  };
 
   return (
     <>
@@ -39,17 +58,39 @@ export default function Login() {
             </div>
 
             {/* <!-- Form --> */}
-            <form className="space-y-7" action={loginAction}>
+            <form className="space-y-7" onSubmit={loginSubmitHandler}>
               {/* <!-- Email --> */}
-              <div className={styles["filed"]}>
-                <input type="email" id="email" name="email" required />
+              <div className={styles["field"]}>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={handleEmailValue}
+                  onBlur={showEmailError}
+                  required
+                />
                 <label htmlFor="email">Email Address</label>
+                {emailErrorMsg && (
+                  <p className={styles["error-msg"]}>{emailErrorMsg}</p>
+                )}
               </div>
 
               {/* <!-- Password --> */}
-              <div className={styles["filed"]}>
-                <input type="password" id="password" name="password" required />
+              <div className={styles["field"]}>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePassValue}
+                  onBlur={showPassError}
+                  required
+                />
                 <label htmlFor="password">Password</label>
+                {passErrorMsg && (
+                  <p className={styles["error-msg"]}>{passErrorMsg} </p>
+                )}
               </div>
 
               <PrimaryBtn>Login</PrimaryBtn>

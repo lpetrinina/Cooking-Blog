@@ -19,12 +19,12 @@
 
 /* Form */
 
-.filed {
+.field {
   display: flex;
   flex-direction: column;
 }
 
-.filed label {
+.field label {
   display: block;
   font-size: 1rem;
   line-height: 1.25rem;
@@ -40,7 +40,7 @@ input:required ~ label::after {
   margin-left: 3px;
 }
 
-.filed input {
+.field input {
   display: block;
   margin-top: 0.25rem;
   padding: 0.5rem 1rem;
@@ -49,16 +49,23 @@ input:required ~ label::after {
   border-radius: 0.5rem;
 }
 
-.filed input:focus {
+.field input:focus {
   outline: 1px solid #f9a8d4;
 }
 
-.filed input:user-invalid {
+.field input:user-invalid {
   border: 1px solid #b91c1c;
 }
 
-.filed input:focus:user-invalid {
+.field input:focus:user-invalid {
   outline: none;
+}
+
+.field .error-msg {
+  font-size: 0.875rem;
+  font-style: italic;
+  align-self: flex-end;
+  color: #b91c1c;
 }
 
 .link-container {
@@ -95,7 +102,7 @@ input:required ~ label::after {
     letter-spacing: 0.1px;
   }
 
-  .filed input {
+  .field input {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
