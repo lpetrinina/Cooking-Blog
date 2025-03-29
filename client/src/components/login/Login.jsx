@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import { useValidateLoginForm } from "../../utils/validateForm";
 import { useLogin } from "../../api/authApi";
@@ -40,10 +41,16 @@ export default function Login() {
     e.preventDefault();
 
     if (!emailErrorMsg && !passErrorMsg) {
-      const authData = await login(email, password);
-      userLoginHandler(authData);
+      try {
+        const authData = await login(email, password);
+        userLoginHandler(authData);
 
-      navigate("/recipes");
+        toast.success("Successful login!");
+        navigate("/recipes");
+      } catch (error) {
+        toast.error("Invalid email or password!");
+        setPassword("");
+      }
     }
   };
 

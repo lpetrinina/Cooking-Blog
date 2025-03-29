@@ -19,6 +19,10 @@ export const request = async (method, url, data, options = {}) => {
 
     const responce = await fetch(url, options);
 
+    if (!responce.ok) {
+        throw await responce.json()
+    }
+
 
     if (responce.status === 204) {
         return;
