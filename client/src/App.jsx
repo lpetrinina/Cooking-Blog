@@ -14,10 +14,13 @@ import RecipeCreate from "./components/recipe-create/RecipeCreate";
 import RecipeEdit from "./components/recipe-edit/RecipeEdit";
 import Footer from "./components/footer/Footer";
 import Logout from "./components/logout/Logout";
-import "./App.css";
 import AuthGuard from "./components/guards/AuthGuard";
 import GuestGuard from "./components/guards/GuestGuard";
 import UserProfile from "./components/profile/UserProfil";
+import NotFound from "./components/error-page/NotFound";
+import ServerError from "./components/error-page/ServerError";
+
+import "./App.css";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
           <div className="mx-auto max-w-7xl py-2 sm:px-6 lg:px-8">
             <div className="mx-auto mb-14 max-w-screen-xl bg-white p-5 sm:p-10 md:p-16">
               <Routes>
+                <Route path="*" element={<NotFound />} />
+                <Route path="/error" element={<ServerError />} />
+
                 <Route path="/" element={<Home />} />
                 <Route path="/recipes" element={<Catalog />} />
                 <Route path="/about" element={<About />} />

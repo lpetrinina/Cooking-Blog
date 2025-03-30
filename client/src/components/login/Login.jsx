@@ -7,6 +7,7 @@ import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./Login.module.css";
+import ErrorPage from "../error-page/NotFound";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -48,8 +49,14 @@ export default function Login() {
         toast.success("Successful login!");
         navigate("/recipes");
       } catch (error) {
-        toast.error("Invalid email or password!");
-        setPassword("");
+        if (error.message === "Failed to fetch") {
+          navigate("/error");
+        }
+
+        if (error.code === 403) {
+          toast.error("Invalid email or password!");
+          setPassword("");
+        }
       }
     }
   };
