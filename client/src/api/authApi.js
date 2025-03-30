@@ -51,7 +51,7 @@ export const useLogout = () => {
         };
 
         request('GET', `${baseURL}/logout`, null, options)
-            .then(() => userLogoutHandler());
+            .finally(() => userLogoutHandler());
 
     }, [accessToken, userLogoutHandler])
 
