@@ -48,6 +48,18 @@
   outline: 1px solid #f9a8d4;
 }
 
+.field .error-msg {
+  font-size: 0.875rem;
+  font-style: italic;
+  align-self: flex-end;
+  color: #b91c1c;
+}
+p.info {
+  font-size: 0.75rem;
+  color: #797979;
+  font-style: italic;
+}
+
 @media (max-width: 640px) {
   .header h2 {
     font-size: 1.7rem;
