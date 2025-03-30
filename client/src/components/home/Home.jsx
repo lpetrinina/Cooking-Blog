@@ -2,9 +2,14 @@ import { Link } from "react-router";
 import { useLatestRecipes } from "../../api/recipeApi";
 import Spinner from "../common/spinner/Spinner";
 import RecipeItem from "../recipe-item/RecipeItem";
+import ServerError from "../error-page/ServerError";
 
 export default function Home() {
-  const { latestRecipes, isPending } = useLatestRecipes();
+  const { latestRecipes, isPending, error } = useLatestRecipes();
+
+  if (error) {
+    return <ServerError />;
+  }
 
   return (
     <>

@@ -79,6 +79,10 @@ export default function SignUp() {
         toast.success("Successful sign up!");
         navigation("/");
       } catch (error) {
+        if (error.message === "Failed to fetch") {
+          navigate("/error");
+        }
+
         toast.error(error.message);
       }
     }

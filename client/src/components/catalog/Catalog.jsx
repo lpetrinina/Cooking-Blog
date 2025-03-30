@@ -1,9 +1,16 @@
 import RecipeItem from "../recipe-item/RecipeItem";
 import Spinner from "../common/spinner/Spinner";
+import ServerError from "../error-page/ServerError";
+
 import { useAllRecipes } from "../../api/recipeApi";
 
 export default function Catalog() {
-  const { isPending, recipes } = useAllRecipes();
+  const { isPending, recipes, error } = useAllRecipes();
+  console.log(error);
+
+  if (error) {
+    return <ServerError />;
+  }
 
   return (
     <>

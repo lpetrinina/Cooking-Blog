@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from 'react-toastify'
 
 import { request } from "../utils/requester";
 import formatData from "../utils/formatData"
@@ -25,6 +26,7 @@ export const useCreateRecipe = () => {
 export const useAllRecipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [isPending, setPending] = useState(true);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
 
@@ -34,13 +36,18 @@ export const useAllRecipes = () => {
 
         request('GET', `${baseUrl}?${serchParams}`)
             .then((data) => setRecipes(data))
+            .catch((err) => {
+                setError(err)
+                toast.error(err.message)
+            })
             .then(() => setPending(false))
 
     }, []);
 
     return {
         isPending,
-        recipes
+        recipes,
+        error
     }
 }
 
@@ -48,6 +55,7 @@ export const useAllRecipes = () => {
 export const useLatestRecipes = () => {
     const [latestRecipes, setLatestRecipes] = useState([]);
     const [isPending, setPending] = useState(true);
+    const [error, setError] = useState(null);
 
     const PAGE_SIZE = 3;
 
@@ -60,12 +68,18 @@ export const useLatestRecipes = () => {
 
         request('GET', `${baseUrl}?${serchParams.toString()}`)
             .then((data) => setLatestRecipes(data))
+            .catch(err => {
+                toast.error(err.message)
+                setError(err)
+            })
             .then(() => setPending(false))
     }, [])
 
     return {
         latestRecipes,
-        isPending
+        isPending,
+        error
+
     };
 }
 
