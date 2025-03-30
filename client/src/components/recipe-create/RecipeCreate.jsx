@@ -18,11 +18,20 @@ export default function RecipeCreate() {
   } = useForm({ defaultValues: {} });
 
   const onSubmit = async (formData) => {
-    await create(formData);
+    try {
+      await create(formData);
 
-    navigate("/recipes");
+      toast.success("New recipe added!🎉");
+
+      navigate("/recipes");
+    } catch (error) {
+      if (error.message === "Failed to fetch") {
+        navigate("/error");
+      } else {
+        toast.error(error.message);
+      }
+    }
   };
-
   return (
     <>
       <div className="flex flex-col justify-center bg-white sm:px-6 lg:px-8">
