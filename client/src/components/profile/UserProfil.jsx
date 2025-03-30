@@ -2,14 +2,22 @@ import { useLikesByOwner } from "../../api/likesApi";
 import { useLikedRecipes, useRecipesByOwner } from "../../api/recipeApi";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../common/spinner/Spinner";
+import ServerError from "../error-page/ServerError";
 import RecipeItemBasic from "../recipe-item/RecipeItemBasic";
 
 export default function UserProfile() {
   const { authData } = useAuth();
-  const { recipes, isPending } = useRecipesByOwner(authData._id);
+  const { recipes, isPending, ownRecipeError } = useRecipesByOwner(
+    authData._id,
+  );
 
   const { likedRecipesIds } = useLikesByOwner();
-  const { likedRecipes } = useLikedRecipes(likedRecipesIds);
+  const { likedRecipes, isLikedPending, likedRecipeError } =
+    useLikedRecipes(likedRecipesIds);
+
+  if (ownRecipeError || likedRecipeError) {
+    return <ServerError />;
+  }
 
   return (
     <>
@@ -59,18 +67,24 @@ export default function UserProfile() {
             </div>
           </div>
 
-          {likedRecipes.length > 0 && (
-            <div className="mx-auto flex flex-col flex-wrap justify-between gap-4 md:flex md:flex-row">
-              {likedRecipes.map((recipe) => (
-                <RecipeItemBasic key={recipe._id} {...recipe} />
-              ))}
-            </div>
-          )}
+          {isLikedPending ? (
+            <Spinner />
+          ) : (
+            <>
+              {likedRecipes.length > 0 && (
+                <div className="mx-auto flex flex-col flex-wrap justify-between gap-4 md:flex md:flex-row">
+                  {likedRecipes.map((recipe) => (
+                    <RecipeItemBasic key={recipe._id} {...recipe} />
+                  ))}
+                </div>
+              )}
 
-          {likedRecipes.length === 0 && (
-            <p className="mb-10 mt-28 text-center text-lg font-bold tracking-wide text-gray-500">
-              You have no recipes in this category.
-            </p>
+              {likedRecipes.length === 0 && (
+                <p className="mb-10 mt-28 text-center text-lg font-bold tracking-wide text-gray-500">
+                  You have no recipes in this category.
+                </p>
+              )}
+            </>
           )}
         </div>
       </div>

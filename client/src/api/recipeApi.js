@@ -87,6 +87,7 @@ export const useLatestRecipes = () => {
 export const useRecipesByOwner = (ownerId) => {
     const [recipes, setRecipes] = useState([]);
     const [isPending, setPending] = useState(true);
+    const [ownRecipeError, setOwnRecipeError] = useState(null);
 
     useEffect(() => {
         const serchParams = new URLSearchParams({
@@ -96,19 +97,26 @@ export const useRecipesByOwner = (ownerId) => {
 
         request('GET', `${baseUrl}?${serchParams.toString()}`)
             .then(data => setRecipes(data))
+            .catch(err => {
+                toast.error(err.message)
+                setOwnRecipeError(err);
+            })
             .then(() => setPending(false));
 
     }, [ownerId])
 
     return {
         recipes,
-        isPending
+        isPending,
+        ownRecipeError
     }
 }
 
 export const useLikedRecipes = (likedRecipesIds) => {
 
     const [likedRecipes, setLikedRecipes] = useState([]);
+    const [likedRecipeError, setLikedRecipeError] = useState(null);
+    const [isLikedPending, setPending] = useState(true)
 
 
     useEffect(() => {
@@ -121,6 +129,11 @@ export const useLikedRecipes = (likedRecipesIds) => {
             Promise.all(likedRecipesIds.map(id =>
                 request('GET', `${baseUrl}/${id}?${searchRecipeInfoParams.toString()}`)))
                 .then(result => setLikedRecipes(result))
+                .catch(err => {
+                    toast.error(err.message)
+                    setLikedRecipeError(err)
+                })
+                .then(setPending(false))
 
         }
 
@@ -128,6 +141,8 @@ export const useLikedRecipes = (likedRecipesIds) => {
 
     return {
         likedRecipes,
+        isLikedPending,
+        likedRecipeError
 
     }
 }
