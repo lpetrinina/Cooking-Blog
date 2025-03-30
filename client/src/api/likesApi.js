@@ -21,7 +21,6 @@ export const useLikes = (recipeId) => {
         request('GET', `${baseUrl}?${serchParams.toString()}`)
             .then(data => {
                 setLikes(data)
-                // setIsLiked(data.some(like => like._ownerId === authData._id))
 
                 const result = data.filter(recipe => recipe._ownerId === authData._id);
 

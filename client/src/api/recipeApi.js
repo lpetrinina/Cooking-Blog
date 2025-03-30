@@ -136,16 +136,22 @@ export const useLikedRecipes = (likedRecipesIds) => {
 export const useOneRecipe = (recipeId) => {
     const [recipe, setRecipe] = useState({});
     const [isPending, setPending] = useState(true);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         request('GET', `${baseUrl}/${recipeId}`)
             .then((data) => setRecipe(data))
+            .catch(err => {
+                setError(err)
+                toast.error(err.message)
+            })
             .then(() => setPending(false));
     }, [])
 
     return {
         recipe,
-        isPending
+        isPending,
+        error
     }
 }
 

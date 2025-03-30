@@ -10,12 +10,14 @@ import { useDeleteRecipe, useOneRecipe } from "../../api/recipeApi";
 import { useDislikeRecipe, useLikeRecipe, useLikes } from "../../api/likesApi";
 import styles from "./RecipeDetails.module.css";
 import useAuth from "../../hooks/useAuth";
+import ServerError from "../error-page/ServerError";
+import { toast } from "react-toastify";
 
 export default function RecipeDetails() {
   const navigate = useNavigate();
   const { authData } = useAuth();
   const { recipeId } = useParams();
-  const { recipe, isPending } = useOneRecipe(recipeId);
+  const { recipe, isPending, error } = useOneRecipe(recipeId);
   const { deleteRecipe } = useDeleteRecipe();
   const [isOpen, setIsOpen] = useState(false);
   const { isLiked, setIsLiked, likes, setLikes, likeId, setLikeId } =
@@ -23,32 +25,52 @@ export default function RecipeDetails() {
   const { likeRecipe } = useLikeRecipe();
   const { dislikeRecipe } = useDislikeRecipe();
 
+  if (error) {
+    return <ServerError />;
+  }
+
   const isOwner = recipe._ownerId === authData._id;
 
-  const clickDeleteHadler = () => {
-    deleteRecipe(recipeId);
-
-    navigate("/recipes");
+  const clickDeleteHadler = async () => {
+    try {
+      await deleteRecipe(recipeId);
+      toast.success("The recipe was deleted successfully!");
+      navigate("/recipes");
+    } catch (error) {
+      toast.error(error.message);
+      setIsOpen(false);
+    }
   };
   const clickCancelHandler = () => {
     setIsOpen(false);
   };
 
   const clickLikeHandler = async () => {
-    const data = await likeRecipe(recipeId);
-    setLikes((currentData) => [...currentData, data]);
-    setIsLiked(true);
-    setLikeId(data._id);
+    try {
+      const data = await likeRecipe(recipeId);
+      setLikes((currentData) => [...currentData, data]);
+      setIsLiked(true);
+      setLikeId(data._id);
+
+      toast.success("You liked this recipe!👍");
+    } catch (error) {
+      toast.error("Failed to like. Try again later!");
+    }
   };
 
   const clickDislikeHandler = async () => {
-    await dislikeRecipe(likeId);
+    try {
+      await dislikeRecipe(likeId);
+      toast.success("You dislike this recipe!👎");
 
-    setLikes((currentLikes) =>
-      currentLikes.filter((like) => like._id !== likeId),
-    );
-    setIsLiked(false);
-    setLikeId(null);
+      setLikes((currentLikes) =>
+        currentLikes.filter((like) => like._id !== likeId),
+      );
+      setIsLiked(false);
+      setLikeId(null);
+    } catch (error) {
+      toast.error("Failed to dislike. Try again later!");
+    }
   };
 
   return (
