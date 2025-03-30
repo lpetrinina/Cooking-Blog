@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 
-export default function MobileNavigation({ navigation }) {
+export default function MobileNavigation({ setIsOpen }) {
   const { accessToken } = useContext(UserContext);
 
   return (
@@ -12,6 +12,7 @@ export default function MobileNavigation({ navigation }) {
 
         <NavLink
           to={"/"}
+          onClick={() => setIsOpen()}
           className={({ isActive }) =>
             isActive ? navStyles.activeStyle : navStyles.hoverStyle
           }
@@ -20,6 +21,7 @@ export default function MobileNavigation({ navigation }) {
         </NavLink>
         <NavLink
           to={"/recipes"}
+          onClick={() => setIsOpen()}
           className={({ isActive }) =>
             isActive ? navStyles.activeStyle : navStyles.hoverStyle
           }
@@ -28,6 +30,7 @@ export default function MobileNavigation({ navigation }) {
         </NavLink>
         <NavLink
           to={"/about"}
+          onClick={() => setIsOpen()}
           className={({ isActive }) =>
             isActive ? navStyles.activeStyle : navStyles.hoverStyle
           }
@@ -40,6 +43,7 @@ export default function MobileNavigation({ navigation }) {
           <>
             <NavLink
               to={"/profile"}
+              onClick={() => setIsOpen()}
               className={({ isActive }) =>
                 isActive ? navStyles.activeStyle : navStyles.hoverStyle
               }
@@ -48,6 +52,7 @@ export default function MobileNavigation({ navigation }) {
             </NavLink>
             <NavLink
               to={"/recipes/create"}
+              onClick={() => setIsOpen()}
               className={({ isActive }) =>
                 isActive ? navStyles.activeStyle : navStyles.hoverStyle
               }
@@ -63,6 +68,7 @@ export default function MobileNavigation({ navigation }) {
           {accessToken ? (
             <Link
               to="/logout"
+              onClick={() => setIsOpen()}
               className="block w-full rounded-md bg-pink-400 px-3 py-2 text-center text-base font-medium text-white"
             >
               Logout
@@ -71,12 +77,14 @@ export default function MobileNavigation({ navigation }) {
             <>
               <Link
                 to="/login"
+                onClick={() => setIsOpen()}
                 className="block w-full rounded-md bg-gray-100 px-3 py-2 text-center text-base font-medium text-pink-400"
               >
                 Login
               </Link>
               <Link
                 to="/sign-up"
+                onClick={() => setIsOpen()}
                 className="block w-full rounded-md bg-pink-400 px-3 py-2 text-center text-base font-medium text-white"
               >
                 Sign Up

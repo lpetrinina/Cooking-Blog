@@ -94,7 +94,7 @@ export default function Header() {
 
         {/* <!-- Mobile menu, show/hide based on menu state --> */}
         <div className={mobileMenuOpen ? "block" : "hidden"} id="mobile-menu">
-          <MobileNavigation />
+          <MobileNavigation setIsOpen={toggleMobileMenu} />
         </div>
       </nav>
     </>
