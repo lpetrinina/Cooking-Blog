@@ -1341,7 +1341,8 @@
                 email: "admin@abv.bg",
                 username: "Admin",
                 hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
-            }
+            },
+
         },
         sessions: {
         }
@@ -1483,7 +1484,8 @@
                     "2 ounces dark chocolate bar (vegan, if desired)",
                     "1 tablespoon shelled chopped pistachios",
                     "1 tablespoon dried cranberries, cherries or goji berries",
-                    "1 tablespoon chopped pecans,Maldon sea salt, for sprinkling on top"
+                    "1 tablespoon chopped pecans",
+                    "1/4 teaspoon Maldon sea salt, for sprinkling on top"
                 ],
                 "steps": [
                     "Add dates, walnuts, pecans, only ¼ cup of pistachios to the bowl of a food processor. Process until chunky. ",
@@ -1508,7 +1510,8 @@
                     "1 1/2 cups unsweetened almond milk",
                     "1/2 teaspoon vanilla extract",
                     "2 tablespoons pure maple syrup",
-                    "2 tablespoons unsweetened cocoa powder,Pinch of sea salt"
+                    "2 tablespoons unsweetened cocoa powder",
+                    "1/4 teaspoon sea salt"
                 ],
                 "steps": [
                     "Add all ingredients to a small pot and place over medium low heat. Whisk vigorously to combine and to get rid of any lumps of cocoa. Do NOT let the hot chocolate boil or you risk burning the almond milk, which can turn the flavor into something you do not want. Simply warm in the pot until steamy, about 3-5 minutes.",
@@ -1518,14 +1521,62 @@
                 "_id": "4867e0e4-5b6c-44a7-aa4c-91c7db70fe98"
             }
         },
+        likes: {
+            "691cd6bd-3f7c-4848-9991-419301f41eb1": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "recipeId": "584a0175-e02a-41f4-ba24-9be68b4d73ff",
+                "_createdOn": 1743115646802,
+                "_id": "691cd6bd-3f7c-4848-9991-419301f41eb1"
+            },
+            "decf103c-587b-4b6c-90c2-224c0ab0479d": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "recipeId": "a47a0f88-1566-4ebc-bc09-f5100e7f96d2",
+                "_createdOn": 1743114102118,
+                "_id": "decf103c-587b-4b6c-90c2-224c0ab0479d"
+            },
+            "decf103c-587b-4b6c-90c2-224c0ab0759d": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "recipeId": "ef6aae54-886f-4dd7-b4e5-8b6bec62f813",
+                "_createdOn": 1743114102118,
+                "_id": "decf103c-587b-4b6c-90c2-224c0ab0479d"
+            },
+            "168a107f-895d-4145-82c7-0045e342677a": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "recipeId": "4867e0e4-5b6c-44a7-aa4c-91c7db70fe98",
+                "_createdOn": 1743452423106,
+                "_id": "168a107f-895d-4145-82c7-0045e342677a"
+            },
+            "07dbdfd2-30dd-496d-9bf9-5f53e90b0ca6": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "recipeId": "584a0175-e02a-41f4-ba24-9be68b4d73ff",
+                "_createdOn": 1743452534401,
+                "_id": "07dbdfd2-30dd-496d-9bf9-5f53e90b0ca6"
+            }
+
+        },
         comments: {
             "0a272c58-b7ea-4e09-a000-7ec988248f66": {
-                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                content: "Great recipe!",
-                recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                content: "I absolutely love how this dessert combines health and indulgence! It's amazing how you can create something so delicious without refined sugars or unhealthy ingredients. Definitely trying this soon!",
+                recipeId: "584a0175-e02a-41f4-ba24-9be68b4d73ff",
                 _createdOn: 1614260681375,
                 _id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+            },
+            "8d27d7bf-bb9e-4e4f-9d13-a3b8c2cb432e": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "recipeId": "2cc4971d-ee2f-447d-9be4-ceab62050cef",
+                "content": "I can’t believe this is a healthy dessert—it looks so rich and decadent! Love that it uses natural sweeteners instead of refined sugar. Definitely a game-changer for guilt-free chocolate cravings!",
+                "_createdOn": 1743451332954,
+                "_id": "8d27d7bf-bb9e-4e4f-9d13-a3b8c2cb432e"
+            },
+            "5d4bc6c5-1471-4b33-bdda-0b0a25d287c7": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "recipeId": "ef6aae54-886f-4dd7-b4e5-8b6bec62f813",
+                "content": "This pumpkin pie looks absolutely perfect! 🧡",
+                "_createdOn": 1743251730711,
+                "_id": "5d4bc6c5-1471-4b33-bdda-0b0a25d287c7"
             }
+
         },
         records: {
             i01: {
@@ -1633,8 +1684,7 @@
                 _id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
             }
         },
-        likes: {
-        },
+
         ideas: {
             "833e0e57-71dc-42c0-b387-0ce0caf5225e": {
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
