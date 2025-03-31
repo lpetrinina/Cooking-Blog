@@ -15,7 +15,7 @@ export default function RecipeCreate() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: {} });
+  } = useForm({ mode: "onBlur" });
 
   const onSubmit = async (formData) => {
     try {
