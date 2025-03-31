@@ -27,7 +27,7 @@ export default function RecipeDetails() {
     useLikes(recipeId);
   const { likeRecipe } = useLikeRecipe();
   const { dislikeRecipe } = useDislikeRecipe();
-  const { comments } = useAllComments(recipeId);
+  const { comments, reloadComments } = useAllComments(recipeId);
 
   if (error) {
     return <ServerError />;
@@ -218,7 +218,9 @@ export default function RecipeDetails() {
               <CommentsList comments={comments} />
 
               {/* Auth users can create comments, except the recipe owner */}
-              {authData.accessToken && !isOwner && <CreateComment />}
+              {authData.accessToken && !isOwner && (
+                <CreateComment reloadComments={reloadComments} />
+              )}
             </div>
           </div>
         </>

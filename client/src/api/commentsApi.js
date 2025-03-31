@@ -2,12 +2,14 @@ import { useEffect, useState } from "react"
 import { request } from "../utils/requester";
 import { toast } from "react-toastify";
 import convertDate from "../utils/convertDate";
+import useAuth from "../hooks/useAuth";
 
 
 const baseUrl = 'http://localhost:3030/data/comments'
 
 export const useAllComments = (recipeId) => {
     const [comments, setComments] = useState([]);
+    const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
 
@@ -28,9 +30,25 @@ export const useAllComments = (recipeId) => {
                 setComments(data)
             })
             .catch(err => toast.error(err.message || 'Something went wrong!'))
-    }, [])
+    }, [recipeId, refresh])
 
-    return { comments };
+    const reloadComments = () => {
+        setRefresh((state) => !state);
+    };
 
+    return { comments, reloadComments };
+}
+
+export const useCreateComment = () => {
+    const { options } = useAuth();
+
+    const create = (recipeId, content) => {
+
+        return request('POST', baseUrl, { recipeId, content }, options);
+    }
+
+    return {
+        create
+    }
 }
 
