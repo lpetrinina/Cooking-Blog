@@ -3,6 +3,7 @@ import { request } from "../utils/requester";
 import { toast } from "react-toastify";
 import convertDate from "../utils/convertDate";
 
+
 const baseUrl = 'http://localhost:3030/data/comments'
 
 export const useAllComments = (recipeId) => {
@@ -12,6 +13,7 @@ export const useAllComments = (recipeId) => {
 
         const serchParams = new URLSearchParams({
             where: `recipeId="${recipeId}"`,
+            load: 'author=_ownerId:users'
         })
 
         request('GET', `${baseUrl}?${serchParams.toString()}`)
@@ -31,3 +33,4 @@ export const useAllComments = (recipeId) => {
     return { comments };
 
 }
+

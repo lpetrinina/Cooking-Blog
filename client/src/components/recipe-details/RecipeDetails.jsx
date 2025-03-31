@@ -14,6 +14,7 @@ import { useDislikeRecipe, useLikeRecipe, useLikes } from "../../api/likesApi";
 import useAuth from "../../hooks/useAuth";
 import styles from "./RecipeDetails.module.css";
 import CommentsList from "../comments/CommentsList";
+import { useAllComments } from "../../api/commentsApi";
 
 export default function RecipeDetails() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export default function RecipeDetails() {
     useLikes(recipeId);
   const { likeRecipe } = useLikeRecipe();
   const { dislikeRecipe } = useDislikeRecipe();
+  const { comments } = useAllComments(recipeId);
 
   if (error) {
     return <ServerError />;
@@ -113,12 +115,17 @@ export default function RecipeDetails() {
                   <div className={styles["recipe-feedback"]}>
                     <div className={styles["likes"]}>
                       <img src="/heart-svgrepo-com.svg" alt="" />
-                      <p> {likes.length} Likes</p>
+                      <p>
+                        {likes.length} {likes.length == 1 ? " Like" : " Likes"}
+                      </p>
                     </div>
 
                     <div className={styles["coments"]}>
                       <img src="/message-svgrepo-com.svg" alt="" />
-                      <p> 5 Coments</p>
+                      <p>
+                        {comments.length}{" "}
+                        {comments.length == 1 ? "Comment" : "Comments"}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -208,7 +215,7 @@ export default function RecipeDetails() {
           <div className="mt-5 bg-pink-100 p-12">
             <h2 className="mb-4 text-lg font-bold uppercase">Comments</h2>
             <div className="flex flex-col space-y-4">
-              <CommentsList />
+              <CommentsList comments={comments} />
 
               {/* Auth users can create comments, except the recipe owner */}
               {authData.accessToken && !isOwner && <CreateComment />}

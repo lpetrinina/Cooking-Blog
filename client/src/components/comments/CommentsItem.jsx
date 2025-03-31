@@ -1,7 +1,7 @@
-export default function CommentsItem({ content, _createdOn }) {
+export default function CommentsItem({ content, _createdOn, author }) {
   return (
     <div className="mb-2 rounded-sm bg-white p-4 shadow-md">
-      <h3 className="text-lg font-bold text-gray-800">Mariya</h3>
+      <h3 className="text-lg font-bold text-gray-800">{author.username}</h3>
       <p className="mb-2 text-sm italic text-gray-700">
         Posted on {_createdOn}
       </p>
