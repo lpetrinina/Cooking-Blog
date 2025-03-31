@@ -55,7 +55,8 @@ export default function RecipeItem({
           <span className="ml-1">{recipeTime} min</span>
         </span>
 
-        <span className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-900">
+        {/* Comments count */}
+        {/* <span className="font-regular mr-1 flex flex-row items-center py-1 text-xs text-gray-900">
           <svg
             className="h-5"
             fill="none"
@@ -70,7 +71,7 @@ export default function RecipeItem({
             ></path>
           </svg>
           <span className="ml-1">39 Comments</span>
-        </span>
+        </span> */}
       </div>
     </div>
   );

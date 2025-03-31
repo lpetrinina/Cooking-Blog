@@ -1,17 +1,19 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
-import CommnetsList from "../comments/CommentsList";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import Spinner from "../common/spinner/Spinner";
 import DeleteModal from "../common/modal/DeleteModal";
+import CreateComment from "../comments/CreateComment";
+import ServerError from "../error-page/ServerError";
+import CommentsItem from "../comments/CommentsItem";
 
 import { useDeleteRecipe, useOneRecipe } from "../../api/recipeApi";
 import { useDislikeRecipe, useLikeRecipe, useLikes } from "../../api/likesApi";
-import styles from "./RecipeDetails.module.css";
 import useAuth from "../../hooks/useAuth";
-import ServerError from "../error-page/ServerError";
-import { toast } from "react-toastify";
+import styles from "./RecipeDetails.module.css";
+import CommentsList from "../comments/CommentsList";
 
 export default function RecipeDetails() {
   const navigate = useNavigate();
@@ -149,7 +151,7 @@ export default function RecipeDetails() {
               </section>
 
               {/* Only logged users can see this section */}
-              {authData._id && (
+              {authData.accessToken && (
                 <section>
                   {/* Every auth user can like recipe, except the owner of it*/}
                   {!isOwner && (
@@ -167,9 +169,6 @@ export default function RecipeDetails() {
                           )}
                         </div>
                       </div>
-
-                      {/* Auth user who already liked current recipe */}
-                      {/* <p className={styles["like-msg"]}> You have already liked this recipe!</p> */}
                     </>
                   )}
 
@@ -205,7 +204,16 @@ export default function RecipeDetails() {
             />
           )}
 
-          <CommnetsList />
+          {/* Comments section */}
+          <div className="mt-5 bg-pink-100 p-12">
+            <h2 className="mb-4 text-lg font-bold uppercase">Comments</h2>
+            <div className="flex flex-col space-y-4">
+              <CommentsList />
+
+              {/* Auth users can create comments, except the recipe owner */}
+              {authData.accessToken && !isOwner && <CreateComment />}
+            </div>
+          </div>
         </>
       )}
     </>
