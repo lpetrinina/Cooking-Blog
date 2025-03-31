@@ -5,6 +5,7 @@ import { request } from "../utils/requester";
 import formatData from "../utils/formatData"
 import useAuth from "../hooks/useAuth";
 
+
 const baseUrl = 'http://localhost:3030/data/recipes';
 
 //use hook on event
@@ -174,11 +175,11 @@ export const useOneRecipe = (recipeId) => {
 export const useEditRecipe = () => {
     const { options } = useAuth();
 
-    const edit = async (recipeId, data) => {
+    const edit = (recipeId, data) => {
 
-        const recipeData = formatData(data);
+        const recipeData = formatData(data)
 
-        return await request('PUT', `${baseUrl}/${recipeId}`, { ...recipeData, _id: recipeId }, options);
+        return request('PUT', `${baseUrl}/${recipeId}`, { ...recipeData, _id: recipeId }, options);
     }
 
     return {
