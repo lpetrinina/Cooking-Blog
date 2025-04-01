@@ -134,9 +134,9 @@ export const useLikedRecipes = (likedRecipesIds) => {
                     toast.error(err.message)
                     setLikedRecipeError(err)
                 })
-                .then(setPending(false))
-
         }
+
+        setPending(false)
 
     }, [likedRecipesIds])
 

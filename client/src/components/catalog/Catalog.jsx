@@ -6,7 +6,6 @@ import { useAllRecipes } from "../../api/recipeApi";
 
 export default function Catalog() {
   const { isPending, recipes, error } = useAllRecipes();
-  console.log(error);
 
   if (error) {
     return <ServerError />;
