@@ -7,7 +7,6 @@ import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 import PrimaryBtn from "../common/buttons/PrimaryBtn";
 import styles from "./Login.module.css";
-import ErrorPage from "../error-page/NotFound";
 
 export default function Login() {
   const navigate = useNavigate();
