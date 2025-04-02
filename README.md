@@ -21,7 +21,12 @@ The app includes both public and private sections, following the required specif
 
   - Each auth user has access all recipes with their details, can create recipes and edit them, like/dislike a specific recipe, or leave a comment about it. The user has a personal area, where they can see all the recipes they have added and all the recipes they have liked.
 
-  ⚠️ Users don't have access to like/dislike and add comment functionalities for recipes they have created by themselves.
+  💡 Users don't have access to like/dislike and add comment functionalities for recipes they have created by themselves.
+
+  ⚠️ When creating and editing a recipe, please make sure to follow the sample structure below, for the fields - ingredients and steps.
+
+  - Ingredients: `2 eggs,1 cup frozen wild blueberries,1/2 teaspoon vanilla extract...`
+  - Steps: `Preheat the oven to 350 degrees F.,In a large bowl, add 1 cup of mashed banana, peanut butter, eggs and maple syrup.,Add the dry ingredients...`
 
   - You can log in with one of these already registered users:
 
@@ -51,8 +56,8 @@ The private section is available to **registered users** and includes the follow
 - ✅ Create - Allows users to add new recipes.
 - ✅ Profile - A page showing two types of recipe collections - created and liked recipes.
 - ✅ Details (with functionalities): A page where users can interact with a specific recipe
-  - 📌 **NO recipe owners:** by liking/disliking or leaving a comment.
-  - 📌 **Recipe owner:** by editing or deleting.
+  - 👉 **Recipe owner:** by editing or deleting.
+  - 👉 **Other users** by liking/disliking or leaving a comment.
 
 ## Technologies and Concepts
 
