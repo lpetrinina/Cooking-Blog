@@ -112,10 +112,11 @@ export default function RecipeEdit() {
               {/* <!-- Preparation time --> */}
               <div className={styles["field"]}>
                 <input
-                  type="text"
+                  type="number"
                   id="prepTime"
                   {...register("prepTime", {
                     required: "Preparation time is required.",
+                    valueAsNumber: true,
                     min: {
                       value: 1,
                       message: "Preparation time should be at least 1 minute.",
@@ -138,10 +139,11 @@ export default function RecipeEdit() {
               {/* <!-- Cook time --> */}
               <div className={styles["field"]}>
                 <input
-                  type="text"
+                  type="number"
                   id="cookTime"
                   {...register("cookTime", {
                     required: "Cook time is required.",
+                    valueAsNumber: true,
                     min: {
                       value: 0,
                       message: "Cook time should be a positive number.",
