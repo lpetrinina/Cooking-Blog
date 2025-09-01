@@ -1,8 +1,19 @@
 # Cooking-Blog - Exam Project for React February 2025 Course in SoftUni
 
-🔎 See live demo [here](https://cooking-blog-455509.web.app/)
+Cooking Blog is a Single page application (SPA) that allows users to browse, post, and interact with various healthy dessert recipes. The app demonstrates dynamic functionalities, interaction with the server (REST service), and the integration of core React concepts and technologies.
 
-Cooking Blog is a Single web application (SPA) that allows users to browse, post, and interact with various healthy dessert recipes. The app demonstrates dynamic functionalities, interaction with the server (REST service), and the integration of core React concepts and technologies.
+## Installation 
+
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+
+Installation:
+`npm install`
+
+To start client:
+`npm run dev`
+
+To start server:
+`node server.js`
 
 ## 📁 Project Structure
 
