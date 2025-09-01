@@ -2,6 +2,9 @@
 
 Cooking Blog is a Single page application (SPA) that allows users to browse, post, and interact with various healthy dessert recipes. The app demonstrates dynamic functionalities, interaction with the server (REST service), and the integration of core React concepts and technologies.
 
+<img width="1919" height="1025" alt="Screenshot 2025-09-01 184057" src="https://github.com/user-attachments/assets/435c250d-b073-45b9-a774-53e4c27b4975" />
+
+
 ## Installation 
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
@@ -109,6 +112,17 @@ The private section is available to **registered users** and includes the follow
 
 - The application follows a well-defined folder structure, which ensures maintainability and scalability of the project.
 
-## Bonuses
+## Project Screen Shots
 
-- **Deploying the application in the cloud**: The application is deployed on Firebase and Google Cloud Run.
+🔍 **_Catalog page_**
+<img width="1908" height="1024" alt="Screenshot 2025-09-01 185743" src="https://github.com/user-attachments/assets/9f99bf18-69eb-46a6-ac65-005a00b763c2" />
+
+🔍 **_Detail recipe page_**
+<img width="1917" height="1024" alt="Screenshot 2025-09-01 184301" src="https://github.com/user-attachments/assets/c395bd09-8967-46f7-98ba-762b4f8c140d" />
+
+🔍 **_Profile page_**
+<img width="1906" height="1021" alt="Screenshot 2025-09-01 184332" src="https://github.com/user-attachments/assets/e7896edd-6e81-4538-9dce-2a9a5f141edd" />
+
+
+
+
