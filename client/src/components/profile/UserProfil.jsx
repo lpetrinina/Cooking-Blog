@@ -25,8 +25,7 @@ export default function UserProfile() {
         <div className="mb-8 flex max-w-72 gap-3 self-end text-center text-gray-500">
           <div className="text-md mt-5">
             <p className="font-normal text-gray-900">
-              Wellcome, <span className="font-medium">{authData.username}</span>
-              !
+              Welcome, <span className="font-medium">{authData.username}</span>!
             </p>
             <p className="text-sm">({authData.email})</p>
           </div>
